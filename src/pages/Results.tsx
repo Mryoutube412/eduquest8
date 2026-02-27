@@ -3,9 +3,12 @@ import { useState } from 'react';
 import type { AnswerRecord } from '../context/GameContext';
 
 interface ResultsState {
-  answers: AnswerRecord[];
+  answers: (AnswerRecord & { paragraph?: string })[];
   subject: string;
   subjectName: string;
+  topic?: string;
+  topicName?: string;
+  testId?: string;
 }
 
 export default function Results() {
@@ -121,8 +124,8 @@ export default function Results() {
         )}
 
         <div className="flex gap-3">
-          <button onClick={() => navigate('/')} className="flex-1 bg-card rounded-xl p-4 card-shadow font-medium text-card-foreground hover:scale-[1.02] transition-transform touch-target">🏠 Ana Sayfa</button>
-          <button onClick={() => navigate(`/quiz/${state.subject}`)} className="flex-1 bg-primary rounded-xl p-4 font-medium text-primary-foreground hover:scale-[1.02] transition-transform touch-target">🔄 Tekrar Çöz</button>
+          <button onClick={() => navigate(`/subject/${state.subject}`)} className="flex-1 bg-card rounded-xl p-4 card-shadow font-medium text-card-foreground hover:scale-[1.02] transition-transform touch-target">🏠 Testlere Dön</button>
+          <button onClick={() => navigate('/')} className="flex-1 bg-primary rounded-xl p-4 font-medium text-primary-foreground hover:scale-[1.02] transition-transform touch-target">📚 Ana Sayfa</button>
         </div>
       </div>
     </div>

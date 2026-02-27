@@ -11,6 +11,8 @@ export interface Question {
   correctIndex: number;
   explanation: string;
   tags: string[];
+  type?: 'kazanim' | 'yeni_nesil';
+  paragraph?: string;
 }
 
 export type Subject = 'turkce' | 'matematik' | 'fen' | 'tarih' | 'ingilizce' | 'din';
@@ -2103,6 +2105,60 @@ export const questions: Question[] = [
   { id: 'dn024', subject: 'din', topic: 'degerler', difficulty: 'kolay', question: 'Hangisi temel değerlerden biridir?', options: ['Bencillik', 'Saygı', 'Kibir', 'Hırs'], correctIndex: 1, explanation: 'Saygı temel bir değerdir.', tags: ['saygı'] },
   { id: 'dn025', subject: 'din', topic: 'degerler', difficulty: 'orta', question: 'Hoşgörü ne demektir?', options: ['Her şeyi kabul etmek', 'Farklılıklara saygı göstermek', 'Sessiz kalmak', 'Karşı çıkmamak'], correctIndex: 1, explanation: 'Farklılıklara saygı göstermektir.', tags: ['hoşgörü'] },
   { id: 'dn026', subject: 'din', topic: 'degerler', difficulty: 'zor', question: '"Komşusu açken tok yatan bizden değildir" hadisi neyi vurgular?', options: ['Yemek yemeyi', 'Paylaşmayı', 'Uyumayı', 'Komşuluğu'], correctIndex: 1, explanation: 'Paylaşma ve dayanışma', tags: ['paylaşma'] },
+
+  // ─── YENİ NESİL SORULAR (paragraf / metin tabanlı) ───
+
+  // Türkçe - Yeni Nesil
+  { id: 'yn_tr001', subject: 'turkce', topic: 'paragraf', difficulty: 'orta', type: 'yeni_nesil',
+    paragraph: 'Yazar, küçük bir kasabada büyümüştü. Çocukluğunun en güzel anıları, dedesinin bahçesinde geçen yazlardı. Dede, her sabah güneş doğmadan kalkar, bahçedeki ağaçları tek tek sulardı. "Bir ağaç dikmek, geleceğe mektup yazmak gibidir" derdi her zaman. Yazar, yıllar sonra büyük şehirde bir apartman dairesinde yaşarken bile, her sabah pencereden bir ağaç arardı gözleriyle.',
+    question: 'Bu paragrafın ana düşüncesi aşağıdakilerden hangisidir?', options: ['Kasaba hayatı şehir hayatından güzeldir', 'Geçmişte yaşanan güzel anılar insanı şekillendirir', 'Ağaç dikmek çok önemli bir iştir', 'Dedeler torunlarına her zaman iyi davranır'], correctIndex: 1, explanation: 'Yazar, geçmiş anılarının kendisini nasıl etkilediğini anlatıyor.', tags: ['paragraf', 'ana düşünce'] },
+
+  { id: 'yn_tr002', subject: 'turkce', topic: 'paragraf', difficulty: 'zor', type: 'yeni_nesil',
+    paragraph: '"İnsan, düşüncelerinin mahkûmudur çoğu zaman. Oysa özgürlük, düşüncenin sınırlarını aşabilmektir. Bir kuş, kafesinin kapısı açıldığında bile uçmayabilir; çünkü kafes, artık onun dünyası olmuştur. Gerçek cesaret, bilindik olanı terk edip bilinmeyene adım atabilmektir."',
+    question: 'Yazarın "kafesteki kuş" benzetmesiyle anlatmak istediği nedir?', options: ['Kuşlar kafeste mutlu olabilir', 'İnsanlar alışkanlıklarının esiri olabilir', 'Özgürlük herkes için aynı anlama gelir', 'Cesaret fiziksel güçle ilgilidir'], correctIndex: 1, explanation: 'Kafesteki kuş, alışkanlıklarından kurtulamayan insanı simgeler.', tags: ['paragraf', 'mecaz'] },
+
+  { id: 'yn_tr003', subject: 'turkce', topic: 'cumle_turleri', difficulty: 'orta', type: 'yeni_nesil',
+    paragraph: 'Aşağıdaki cümleleri inceleyin:\nI. "Keşke yağmur yağsa da toprak sulansa."\nII. "Yarın mutlaka geleceğim."\nIII. "Acaba bu sorunun cevabını biliyor musun?"\nIV. "Ne güzel bir gün!"',
+    question: 'Yukarıdaki cümlelerden hangisi istek cümlesidir?', options: ['I', 'II', 'III', 'IV'], correctIndex: 0, explanation: '"Keşke... yağsa" kalıbı istek bildirir.', tags: ['cümle türleri', 'istek'] },
+
+  { id: 'yn_tr004', subject: 'turkce', topic: 'soz_sanatlari', difficulty: 'zor', type: 'yeni_nesil',
+    paragraph: '"Akşam olunca şehrin ışıkları yıldızlarla yarışıyordu. Sokaklar, yorgun ayaklarla döşenmiş gibiydi. Rüzgâr, kulağıma eski bir şarkı mırıldanıyordu. Ay, gökyüzünün ortasında bir gümüş tepsi gibi duruyordu."',
+    question: 'Bu parçada kaç farklı söz sanatı kullanılmıştır?', options: ['1', '2', '3', '4'], correctIndex: 3, explanation: 'Kişileştirme (rüzgâr mırıldanıyor, sokaklar yorgun), benzetme (ay = gümüş tepsi, ışıklar yarışıyor), teşbih ve intak bulunur.', tags: ['söz sanatları'] },
+
+  // Matematik - Yeni Nesil
+  { id: 'yn_mt001', subject: 'matematik', topic: 'denklemler', difficulty: 'orta', type: 'yeni_nesil',
+    paragraph: 'Ali\'nin yaşı Ayşe\'nin yaşının 3 katından 2 eksiktir. Ali 25 yaşında olduğuna göre:',
+    question: 'Ayşe kaç yaşındadır?', options: ['7', '8', '9', '10'], correctIndex: 2, explanation: '3x - 2 = 25 → 3x = 27 → x = 9', tags: ['denklem', 'yaş problemi'] },
+
+  { id: 'yn_mt002', subject: 'matematik', topic: 'oran_oranti', difficulty: 'zor', type: 'yeni_nesil',
+    paragraph: 'Bir sınıfta kız ve erkek öğrenci oranı 3:5\'tir. Sınıftan 4 kız ayrılıp 4 erkek geldiğinde oran 1:3 oluyor.',
+    question: 'Başlangıçta sınıfta kaç öğrenci vardır?', options: ['24', '32', '40', '48'], correctIndex: 1, explanation: '3k ve 5k olsun. (3k-4)/(5k+4) = 1/3 → 9k-12 = 5k+4 → 4k = 16 → k=4, toplam 32', tags: ['oran', 'orantı'] },
+
+  { id: 'yn_mt003', subject: 'matematik', topic: 'geometri', difficulty: 'zor', type: 'yeni_nesil',
+    paragraph: 'Bir dikdörtgenin çevresi 40 cm\'dir. Uzun kenarı kısa kenarının 3 katıdır.',
+    question: 'Dikdörtgenin alanı kaç cm²\'dir?', options: ['60', '75', '80', '100'], correctIndex: 1, explanation: '2(3x + x) = 40 → 8x = 40 → x = 5. Alan = 15 × 5 = 75', tags: ['geometri', 'alan'] },
+
+  { id: 'yn_mt004', subject: 'matematik', topic: 'olasilik', difficulty: 'zor', type: 'yeni_nesil',
+    paragraph: 'Bir torbada 4 kırmızı, 3 mavi ve 5 yeşil bilye vardır. Torbadan arka arkaya 2 bilye çekiliyor (ilk çekilen geri konmadan).',
+    question: 'İki bilyenin de kırmızı olma olasılığı kaçtır?', options: ['1/11', '1/12', '4/33', '1/9'], correctIndex: 0, explanation: '(4/12) × (3/11) = 12/132 = 1/11', tags: ['olasılık', 'koşullu'] },
+
+  // Fen - Yeni Nesil
+  { id: 'yn_fn001', subject: 'fen', topic: 'kuvvet', difficulty: 'zor', type: 'yeni_nesil',
+    paragraph: 'Bir cisim yatay düzlemde hareketsiz durmaktadır. Cisme sağa doğru 30 N, sola doğru 10 N ve yukarı doğru 20 N kuvvet uygulanmaktadır. Cismin ağırlığı 20 N\'dur.',
+    question: 'Net kuvvetin büyüklüğü kaç Newton\'dur?', options: ['0 N', '10 N', '20 N', '30 N'], correctIndex: 2, explanation: 'Yatayda: 30-10=20N sağa. Dikeyde: 20-20=0N. Net = 20N', tags: ['kuvvet', 'bileşke'] },
+
+  { id: 'yn_fn002', subject: 'fen', topic: 'madde', difficulty: 'orta', type: 'yeni_nesil',
+    paragraph: 'Bir deney sırasında öğrenci şu gözlemleri yapmıştır:\n- Madde A: Belirli bir şekli yok, sıkıştırılamıyor, akışkan\n- Madde B: Belirli şekli var, sıkıştırılamıyor\n- Madde C: Belirli şekli yok, sıkıştırılabiliyor, yayılabiliyor',
+    question: 'A, B ve C maddelerinin halleri sırasıyla hangisidir?', options: ['Katı-Sıvı-Gaz', 'Sıvı-Katı-Gaz', 'Gaz-Katı-Sıvı', 'Sıvı-Gaz-Katı'], correctIndex: 1, explanation: 'A=Sıvı (şekli yok, sıkışmaz), B=Katı (şekli var), C=Gaz (sıkışır, yayılır)', tags: ['madde', 'hal'] },
+
+  // Tarih - Yeni Nesil
+  { id: 'yn_tr_h001', subject: 'tarih', topic: 'ataturk', difficulty: 'zor', type: 'yeni_nesil',
+    paragraph: '"Atatürk, 1 Kasım 1928\'de Harf İnkılabını gerçekleştirdi. Bu değişiklikle Arap harfleri kaldırılarak Latin alfabesi kabul edildi. Atatürk\'ün amacı, okuma-yazma oranını artırmak ve Batı dünyasıyla kültürel yakınlaşmayı sağlamaktı. Millet Mektepleri açılarak halka yeni alfabe öğretildi."',
+    question: 'Harf İnkılabı\'nın temel amacı aşağıdakilerden hangisi değildir?', options: ['Okuma-yazma oranını artırmak', 'Batı ile kültürel yakınlaşma', 'Din eğitimini kaldırmak', 'Çağdaşlaşma'], correctIndex: 2, explanation: 'Harf İnkılabının amacı din eğitimini kaldırmak değil, okuma-yazma ve çağdaşlaşma idi.', tags: ['inkılap', 'harf'] },
+
+  { id: 'yn_tr_h002', subject: 'tarih', topic: 'kurtulus_savasi', difficulty: 'zor', type: 'yeni_nesil',
+    paragraph: '"19 Mayıs 1919\'da Samsun\'a çıkan Mustafa Kemal, Amasya Genelgesi, Erzurum Kongresi ve Sivas Kongresi ile milli mücadelenin temellerini attı. Bu süreçte alınan kararlar, milli iradeye dayalı bir yönetim anlayışını ortaya koyuyordu."',
+    question: '"Milletin istiklalini yine milletin azim ve kararı kurtaracaktır" sözü hangi belgede yer alır?', options: ['Erzurum Kongresi', 'Amasya Genelgesi', 'Sivas Kongresi', 'Misak-ı Milli'], correctIndex: 1, explanation: 'Bu söz Amasya Genelgesi\'nde yer alır.', tags: ['amasya', 'genelge'] },
 ];
 
 // ─── YARDIMCI FONKSİYONLAR ───
@@ -2123,4 +2179,77 @@ export function getRandomQuestions(
 
   const shuffled = [...pool].sort(() => Math.random() - 0.5);
   return shuffled.slice(0, Math.min(count, shuffled.length));
+}
+
+export interface TestInfo {
+  id: string;
+  name: string;
+  subject: string;
+  topic: string;
+  topicName: string;
+  difficulty: 'kolay' | 'orta' | 'zor';
+  questionCount: number;
+  questions: Question[];
+}
+
+export function getTestsForTopic(subject: string, topic: string): TestInfo[] {
+  const topicQuestions = questions.filter(q => q.subject === subject && q.topic === topic);
+  const subjectInfo = SUBJECTS.find(s => s.id === subject);
+  const topicInfo = subjectInfo?.topics.find(t => t.id === topic);
+  const topicName = topicInfo?.name || topic;
+  const tests: TestInfo[] = [];
+
+  for (const diff of ['kolay', 'orta', 'zor'] as const) {
+    let pool = topicQuestions.filter(q => q.difficulty === diff);
+    
+    // For kolay: only kazanim questions
+    if (diff === 'kolay') {
+      pool = pool.filter(q => (q.type || 'kazanim') === 'kazanim');
+    }
+    
+    // Sort by ID for deterministic test generation
+    pool.sort((a, b) => a.id.localeCompare(b.id));
+    
+    // Chunk into tests of 10
+    const chunkSize = 10;
+    for (let i = 0; i < pool.length; i += chunkSize) {
+      const chunk = pool.slice(i, i + chunkSize);
+      if (chunk.length < 3) continue; // skip tiny tests
+      const testNum = Math.floor(i / chunkSize) + 1;
+      const testId = `${subject}_${topic}_${diff}_${testNum}`;
+      tests.push({
+        id: testId,
+        name: `Test ${testNum}`,
+        subject,
+        topic,
+        topicName,
+        difficulty: diff,
+        questionCount: chunk.length,
+        questions: chunk,
+      });
+    }
+  }
+  
+  return tests;
+}
+
+// For orta/zor: mix 50% kazanım + 50% yeni nesil when available
+export function getTestQuestions(test: TestInfo): Question[] {
+  const qs = [...test.questions];
+  
+  if (test.difficulty === 'kolay') {
+    return qs; // only kazanım
+  }
+  
+  // Try to balance 50/50
+  const kazanim = qs.filter(q => (q.type || 'kazanim') === 'kazanim');
+  const yeniNesil = qs.filter(q => q.type === 'yeni_nesil');
+  
+  if (yeniNesil.length === 0) return qs; // no yeni nesil available, use all
+  
+  const half = Math.ceil(qs.length / 2);
+  const selectedKazanim = kazanim.slice(0, half);
+  const selectedYeniNesil = yeniNesil.slice(0, qs.length - selectedKazanim.length);
+  
+  return [...selectedKazanim, ...selectedYeniNesil].sort(() => Math.random() - 0.5);
 }
