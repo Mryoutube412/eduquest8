@@ -5,6 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import { useSound } from '../hooks/useSound';
 import { useConfetti } from '../hooks/useConfetti';
+import { useBadgeChecker } from '../hooks/useBadgeChecker';
 
 const TIMER_DURATION = 20;
 const QUESTION_COUNT = 10;
@@ -16,6 +17,7 @@ export default function Quiz() {
   const { user } = useAuth();
   const { play, setEnabled } = useSound();
   const { fire, ConfettiOverlay } = useConfetti();
+  const { checkAfterQuiz } = useBadgeChecker();
 
   const [difficultySelect, setDifficultySelect] = useState(true);
   const [selectedDifficulty, setSelectedDifficulty] = useState<string | undefined>();
@@ -25,8 +27,11 @@ export default function Quiz() {
   const [timeLeft, setTimeLeft] = useState(TIMER_DURATION);
   const [answers, setAnswers] = useState<Array<{ questionId: string; question: string; selectedIndex: number; correctIndex: number; correct: boolean; options: string[]; explanation: string }>>([]);
   const [feedback, setFeedback] = useState<'correct' | 'wrong' | null>(null);
+  const [localStreak, setLocalStreak] = useState(0);
+  const [hadFastAnswer, setHadFastAnswer] = useState(false);
   const answered = useRef(false);
   const timerRef = useRef<ReturnType<typeof setInterval>>();
+  const answerStartTime = useRef<number>(Date.now());
 
   const settings = JSON.parse(localStorage.getItem('quiz-settings') || '{"soundEnabled":true,"timerEnabled":true}');
   const subjectInfo = SUBJECTS.find(s => s.id === subject);
@@ -46,6 +51,7 @@ export default function Quiz() {
     if (difficultySelect || !settings.timerEnabled || questions.length === 0 || feedback) return;
     setTimeLeft(TIMER_DURATION);
     answered.current = false;
+    answerStartTime.current = Date.now();
     timerRef.current = setInterval(() => {
       setTimeLeft(prev => {
         if (prev <= 1) { clearInterval(timerRef.current); if (!answered.current) handleAnswer(-1); return 0; }
@@ -63,9 +69,15 @@ export default function Quiz() {
     const q = questions[currentIndex];
     const isCorrect = index === q.correctIndex;
     const points = POINTS[q.difficulty] || 3;
+    const answerTime = (Date.now() - answerStartTime.current) / 1000;
 
     setSelectedIndex(index);
     setFeedback(isCorrect ? 'correct' : 'wrong');
+
+    // Track fast answers and local streak
+    if (answerTime < 5 && isCorrect) setHadFastAnswer(true);
+    const newLocalStreak = isCorrect ? localStreak + 1 : 0;
+    setLocalStreak(newLocalStreak);
 
     if (isCorrect) { play('correct'); fire(); } else { play('wrong'); }
 
@@ -83,14 +95,29 @@ export default function Quiz() {
       });
     }
 
-    setAnswers(prev => [...prev, {
+    const newAnswer = {
       questionId: q.id, question: q.question, selectedIndex: index,
       correctIndex: q.correctIndex, correct: isCorrect, options: [...q.options], explanation: q.explanation,
-    }]);
+    };
+
+    setAnswers(prev => [...prev, newAnswer]);
 
     setTimeout(() => {
       if (currentIndex + 1 >= questions.length) {
-        const allAnswers = [...answers, { questionId: q.id, question: q.question, selectedIndex: index, correctIndex: q.correctIndex, correct: isCorrect, options: [...q.options], explanation: q.explanation }];
+        const allAnswers = [...answers, newAnswer];
+        const totalCorrect = allAnswers.filter(a => a.correct).length;
+
+        // Check badges after quiz ends
+        if (subject) {
+          checkAfterQuiz({
+            subject,
+            correctCount: totalCorrect,
+            totalCount: allAnswers.length,
+            streak: newLocalStreak,
+            fastAnswer: hadFastAnswer || (answerTime < 5 && isCorrect),
+          });
+        }
+
         navigate('/results', { state: { answers: allAnswers, subject, subjectName: subjectInfo?.name, topic, topicName: topicInfo?.name } });
       } else {
         setCurrentIndex(i => i + 1);
@@ -98,7 +125,7 @@ export default function Quiz() {
         setFeedback(null);
       }
     }, 1200);
-  }, [currentIndex, questions, answers, subject, subjectInfo, user]);
+  }, [currentIndex, questions, answers, subject, subjectInfo, user, localStreak, hadFastAnswer, checkAfterQuiz]);
 
   if (difficultySelect) {
     return (
