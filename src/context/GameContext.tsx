@@ -11,6 +11,7 @@ export interface Badge {
 export interface Settings {
   soundEnabled: boolean;
   timerEnabled: boolean;
+  timerDuration: number; // seconds, 10-300
   presentationMode: boolean;
   darkMode: boolean;
 }
@@ -60,6 +61,7 @@ const DEFAULT_BADGES: Badge[] = [
 const DEFAULT_SETTINGS: Settings = {
   soundEnabled: true,
   timerEnabled: true,
+  timerDuration: 20,
   presentationMode: false,
   darkMode: false,
 };

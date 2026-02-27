@@ -1,55 +1,71 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { getRandomQuestions, SUBJECTS, type Question } from '../data/questions';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { getTestsForTopic, getTestQuestions, type TestInfo, type Question, SUBJECTS } from '../data/questions';
 import { useAuth } from '../context/AuthContext';
+import { useGame } from '../context/GameContext';
 import { supabase } from '@/integrations/supabase/client';
 import { useSound } from '../hooks/useSound';
 import { useConfetti } from '../hooks/useConfetti';
 import { useBadgeChecker } from '../hooks/useBadgeChecker';
 
-const TIMER_DURATION = 20;
-const QUESTION_COUNT = 10;
 const POINTS: Record<string, number> = { kolay: 3, orta: 6, zor: 10 };
 
 export default function Quiz() {
   const { subject, topic } = useParams<{ subject: string; topic: string }>();
+  const location = useLocation();
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { settings } = useGame();
   const { play, setEnabled } = useSound();
   const { fire, ConfettiOverlay } = useConfetti();
   const { checkAfterQuiz } = useBadgeChecker();
 
-  const [difficultySelect, setDifficultySelect] = useState(true);
-  const [selectedDifficulty, setSelectedDifficulty] = useState<string | undefined>();
+  const locationState = location.state as { testId?: string; difficulty?: string } | null;
+  const testId = locationState?.testId;
+  const difficulty = locationState?.difficulty;
+
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const [timeLeft, setTimeLeft] = useState(TIMER_DURATION);
-  const [answers, setAnswers] = useState<Array<{ questionId: string; question: string; selectedIndex: number; correctIndex: number; correct: boolean; options: string[]; explanation: string }>>([]);
+  const [timeLeft, setTimeLeft] = useState(settings.timerDuration);
+  const [answers, setAnswers] = useState<Array<{ questionId: string; question: string; selectedIndex: number; correctIndex: number; correct: boolean; options: string[]; explanation: string; paragraph?: string }>>([]);
   const [feedback, setFeedback] = useState<'correct' | 'wrong' | null>(null);
   const [localStreak, setLocalStreak] = useState(0);
   const [hadFastAnswer, setHadFastAnswer] = useState(false);
+  const [confirmExit, setConfirmExit] = useState(false);
   const answered = useRef(false);
   const timerRef = useRef<ReturnType<typeof setInterval>>();
   const answerStartTime = useRef<number>(Date.now());
 
-  const settings = JSON.parse(localStorage.getItem('quiz-settings') || '{"soundEnabled":true,"timerEnabled":true}');
   const subjectInfo = SUBJECTS.find(s => s.id === subject);
   const topicInfo = subjectInfo?.topics.find(t => t.id === topic);
 
+  // Timer disabled in hard mode
+  const timerActive = settings.timerEnabled && difficulty !== 'zor';
+  const timerDuration = settings.timerDuration;
+
   useEffect(() => { setEnabled(settings.soundEnabled); }, [settings.soundEnabled]);
 
-  const startQuiz = (diff?: string) => {
-    setSelectedDifficulty(diff);
-    const qs = getRandomQuestions(subject as any, QUESTION_COUNT, topic, diff);
-    if (qs.length === 0) { navigate(`/subject/${subject}`); return; }
-    setQuestions(qs);
-    setDifficultySelect(false);
-  };
-
+  // Load test questions
   useEffect(() => {
-    if (difficultySelect || !settings.timerEnabled || questions.length === 0 || feedback) return;
-    setTimeLeft(TIMER_DURATION);
+    if (!testId || !subject || !topic) {
+      navigate(`/subject/${subject}`);
+      return;
+    }
+    const tests = getTestsForTopic(subject, topic);
+    const test = tests.find(t => t.id === testId);
+    if (!test) {
+      navigate(`/subject/${subject}`);
+      return;
+    }
+    const qs = getTestQuestions(test);
+    setQuestions(qs);
+  }, [testId, subject, topic]);
+
+  // Timer
+  useEffect(() => {
+    if (!timerActive || questions.length === 0 || feedback) return;
+    setTimeLeft(timerDuration);
     answered.current = false;
     answerStartTime.current = Date.now();
     timerRef.current = setInterval(() => {
@@ -59,7 +75,7 @@ export default function Quiz() {
       });
     }, 1000);
     return () => clearInterval(timerRef.current);
-  }, [currentIndex, questions.length, settings.timerEnabled, difficultySelect]);
+  }, [currentIndex, questions.length, timerActive, timerDuration]);
 
   const handleAnswer = useCallback((index: number) => {
     if (answered.current) return;
@@ -68,46 +84,63 @@ export default function Quiz() {
 
     const q = questions[currentIndex];
     const isCorrect = index === q.correctIndex;
-    const points = POINTS[q.difficulty] || 3;
     const answerTime = (Date.now() - answerStartTime.current) / 1000;
 
     setSelectedIndex(index);
     setFeedback(isCorrect ? 'correct' : 'wrong');
 
-    // Track fast answers and local streak
     if (answerTime < 5 && isCorrect) setHadFastAnswer(true);
     const newLocalStreak = isCorrect ? localStreak + 1 : 0;
     setLocalStreak(newLocalStreak);
 
     if (isCorrect) { play('correct'); fire(); } else { play('wrong'); }
 
-    if (user) {
-      supabase.from('profiles').select('total_score, total_correct, total_wrong, streak, best_streak').eq('user_id', user.id).single().then(({ data }) => {
-        if (!data) return;
-        const newStreak = isCorrect ? data.streak + 1 : 0;
-        supabase.from('profiles').update({
-          total_score: data.total_score + (isCorrect ? points : 0),
-          total_correct: data.total_correct + (isCorrect ? 1 : 0),
-          total_wrong: data.total_wrong + (isCorrect ? 0 : 1),
-          streak: newStreak,
-          best_streak: Math.max(newStreak, data.best_streak),
-        }).eq('user_id', user.id).then(() => {});
-      });
-    }
-
     const newAnswer = {
       questionId: q.id, question: q.question, selectedIndex: index,
-      correctIndex: q.correctIndex, correct: isCorrect, options: [...q.options], explanation: q.explanation,
+      correctIndex: q.correctIndex, correct: isCorrect, options: [...q.options],
+      explanation: q.explanation, paragraph: q.paragraph,
     };
 
     setAnswers(prev => [...prev, newAnswer]);
 
     setTimeout(() => {
       if (currentIndex + 1 >= questions.length) {
+        // Test finished - award points NOW
         const allAnswers = [...answers, newAnswer];
         const totalCorrect = allAnswers.filter(a => a.correct).length;
+        const totalScore = allAnswers.reduce((sum, a) => {
+          if (!a.correct) return sum;
+          const qData = questions.find(q => q.id === a.questionId);
+          return sum + (POINTS[qData?.difficulty || 'kolay'] || 3);
+        }, 0);
 
-        // Check badges after quiz ends
+        // Save to DB
+        if (user) {
+          supabase.from('profiles').select('total_score, total_correct, total_wrong, streak, best_streak').eq('user_id', user.id).single().then(({ data }) => {
+            if (!data) return;
+            const newStreak = totalCorrect === allAnswers.length ? data.streak + totalCorrect : totalCorrect;
+            supabase.from('profiles').update({
+              total_score: data.total_score + totalScore,
+              total_correct: data.total_correct + totalCorrect,
+              total_wrong: data.total_wrong + (allAnswers.length - totalCorrect),
+              streak: newStreak,
+              best_streak: Math.max(newStreak, data.best_streak),
+            }).eq('user_id', user.id).then(() => {});
+          });
+
+          // Record test completion
+          if (testId) {
+            supabase.from('completed_tests').insert({
+              user_id: user.id,
+              test_id: testId,
+              score: totalScore,
+              correct_count: totalCorrect,
+              total_count: allAnswers.length,
+            }).then(() => {});
+          }
+        }
+
+        // Check badges
         if (subject) {
           checkAfterQuiz({
             subject,
@@ -118,59 +151,48 @@ export default function Quiz() {
           });
         }
 
-        navigate('/results', { state: { answers: allAnswers, subject, subjectName: subjectInfo?.name, topic, topicName: topicInfo?.name } });
+        navigate('/results', {
+          state: {
+            answers: allAnswers, subject, subjectName: subjectInfo?.name,
+            topic, topicName: topicInfo?.name, testId,
+          }
+        });
       } else {
         setCurrentIndex(i => i + 1);
         setSelectedIndex(null);
         setFeedback(null);
       }
     }, 1200);
-  }, [currentIndex, questions, answers, subject, subjectInfo, user, localStreak, hadFastAnswer, checkAfterQuiz]);
+  }, [currentIndex, questions, answers, subject, subjectInfo, user, localStreak, hadFastAnswer, checkAfterQuiz, testId]);
 
-  if (difficultySelect) {
-    return (
-      <div className="min-h-screen bg-background bg-pattern flex items-center justify-center p-4">
-        <div className="w-full max-w-md space-y-6 animate-fade-in">
-          <div className="text-center">
-            <p className="text-4xl mb-2">{topicInfo?.icon}</p>
-            <h1 className="text-2xl font-bold text-foreground">{topicInfo?.name}</h1>
-            <p className="text-muted-foreground">{subjectInfo?.name}</p>
-          </div>
-          <div className="space-y-3">
-            {[
-              { key: 'kolay', label: '🟢 Kolay', desc: 'Soru başı 3 puan', color: 'hover:border-green-500' },
-              { key: 'orta', label: '🟡 Orta', desc: 'Soru başı 6 puan', color: 'hover:border-yellow-500' },
-              { key: 'zor', label: '🔴 Zor', desc: 'Soru başı 10 puan', color: 'hover:border-red-500' },
-              { key: undefined as any, label: '🎲 Karışık', desc: 'Tüm zorluklar', color: 'hover:border-primary' },
-            ].map(d => (
-              <button key={d.label} onClick={() => startQuiz(d.key)}
-                className={`w-full bg-card rounded-2xl p-5 card-shadow border-2 border-transparent ${d.color} transition-all hover:scale-[1.02] active:scale-[0.98] text-left touch-target`}>
-                <p className="font-bold text-card-foreground text-lg">{d.label}</p>
-                <p className="text-sm text-muted-foreground">{d.desc}</p>
-              </button>
-            ))}
-          </div>
-          <button onClick={() => navigate(`/subject/${subject}`)} className="w-full text-center text-muted-foreground hover:text-foreground py-3 touch-target">← Geri</button>
-        </div>
-      </div>
-    );
-  }
+  const handleExit = () => {
+    if (confirmExit) {
+      // Exit without points
+      navigate(`/subject/${subject}`);
+    } else {
+      setConfirmExit(true);
+      setTimeout(() => setConfirmExit(false), 3000);
+    }
+  };
 
   if (questions.length === 0) return null;
 
   const q = questions[currentIndex];
-  const progress = settings.timerEnabled ? (timeLeft / TIMER_DURATION) * 100 : 100;
+  const progress = timerActive ? (timeLeft / timerDuration) * 100 : 100;
 
   return (
     <div className="min-h-screen bg-background bg-pattern flex flex-col">
       <ConfettiOverlay />
+      {/* Header */}
       <div className="bg-card card-shadow px-4 py-3">
         <div className="max-w-2xl mx-auto flex items-center justify-between">
-          <button onClick={() => navigate(`/subject/${subject}`)} className="text-muted-foreground hover:text-foreground transition-colors touch-target text-lg">← Geri</button>
+          <button onClick={handleExit} className="text-muted-foreground hover:text-foreground transition-colors touch-target text-lg">
+            {confirmExit ? '⚠️ Çıkarsan puan gelmez!' : '← Çık'}
+          </button>
           <span className="font-bold text-foreground">{topicInfo?.icon} {topicInfo?.name}</span>
           <span className="text-sm font-medium text-muted-foreground">{currentIndex + 1} / {questions.length}</span>
         </div>
-        {settings.timerEnabled && (
+        {timerActive && (
           <div className="max-w-2xl mx-auto mt-2">
             <div className="h-2 bg-muted rounded-full overflow-hidden">
               <div className={`h-full rounded-full transition-all duration-1000 ease-linear ${timeLeft <= 5 ? 'bg-destructive' : timeLeft <= 10 ? 'bg-warning' : 'bg-success'}`} style={{ width: `${progress}%` }} />
@@ -178,15 +200,34 @@ export default function Quiz() {
             <p className="text-xs text-muted-foreground mt-1 text-right">{timeLeft} saniye</p>
           </div>
         )}
+        {!timerActive && difficulty === 'zor' && (
+          <p className="max-w-2xl mx-auto text-xs text-muted-foreground mt-1">🔴 Zor Mod – Süresiz</p>
+        )}
       </div>
+
+      {/* Question */}
       <div className="flex-1 flex items-center justify-center p-4">
         <div className="w-full max-w-2xl space-y-6 animate-fade-in" key={currentIndex}>
+          {/* Paragraph (for yeni nesil / hard questions) */}
+          {q.paragraph && (
+            <div className="bg-card rounded-2xl p-6 card-shadow border-l-4 border-primary">
+              <p className="text-xs font-medium text-primary mb-2 uppercase tracking-wider">📖 Metin</p>
+              <p className="text-sm md:text-base text-card-foreground leading-relaxed whitespace-pre-line">{q.paragraph}</p>
+            </div>
+          )}
+
           <div className="bg-card rounded-2xl p-8 card-shadow">
-            <p className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">
-              {q.difficulty === 'kolay' ? '🟢 Kolay (+3)' : q.difficulty === 'orta' ? '🟡 Orta (+6)' : '🔴 Zor (+10)'}
-            </p>
+            <div className="flex items-center gap-2 mb-2">
+              <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                {q.difficulty === 'kolay' ? '🟢 Kolay (+3)' : q.difficulty === 'orta' ? '🟡 Orta (+6)' : '🔴 Zor (+10)'}
+              </p>
+              {q.type === 'yeni_nesil' && (
+                <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full font-medium">Yeni Nesil</span>
+              )}
+            </div>
             <h2 className="text-xl md:text-2xl font-bold text-card-foreground leading-relaxed">{q.question}</h2>
           </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {q.options.map((opt, i) => {
               const isSelected = selectedIndex === i;

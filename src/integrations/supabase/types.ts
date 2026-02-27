@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      completed_tests: {
+        Row: {
+          completed_at: string
+          correct_count: number
+          id: string
+          score: number
+          test_id: string
+          total_count: number
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string
+          correct_count?: number
+          id?: string
+          score?: number
+          test_id: string
+          total_count?: number
+          user_id: string
+        }
+        Update: {
+          completed_at?: string
+          correct_count?: number
+          id?: string
+          score?: number
+          test_id?: string
+          total_count?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
       messages: {
         Row: {
           content: string
