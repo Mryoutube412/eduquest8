@@ -42,27 +42,19 @@ export const SUBJECTS: SubjectInfo[] = [
       { id: 'sozcuk_turleri', name: 'Sözcük Türleri', icon: '📝' },
       { id: 'deyimler', name: 'Deyimler', icon: '💬' },
       { id: 'atasozleri', name: 'Atasözleri', icon: '📜' },
-      { id: 'tamlama', name: 'İsim Tamlaması', icon: '🔗' },
+      { id: 'tamlama', name: 'Tamlamalar', icon: '🔗' },
       { id: 'fiiller', name: 'Fiiller', icon: '🏃' },
       { id: 'ses_bilgisi', name: 'Ses Bilgisi', icon: '🔊' },
       { id: 'yazim_kurallari', name: 'Yazım Kuralları', icon: '✍️' },
-      // ─── YENİ EKLEDİKLERİMİZ ───
       { id: 'fiilimsiler', name: 'Fiilimsiler', icon: '🏃‍♂️' },
       { id: 'cumlenin_ogeleri', name: 'Cümlenin Öğeleri', icon: '🧩' },
       { id: 'cumle_turleri', name: 'Cümle Türleri', icon: '📜' },
       { id: 'metin_turleri', name: 'Metin Türleri', icon: '📚' },
-      { id: 'fiilde_cati', name: 'Fiilde Çatı', icon: '🏗️' },
       { id: 'paragraf', name: 'Paragraf', icon: '📝' },
-      { id: 'anlatim_bozukluklari', name: 'Anlatım Bozuklukları', icon: '⚠️' },
       { id: 'noktalama_isaretleri', name: 'Noktalama İşaretleri', icon: '❗' },
-      { id: 'ortulu_anlam', name: 'Örtülü Anlam', icon: '🕶️' },
       { id: 'gercek_mecaz', name: 'Gerçek-Mecaz Anlam', icon: '🌟' },
       { id: 'oznel_nesnel', name: 'Öznel-Nesnel Anlatım', icon: '🧠' },
-      { id: 'deyim_atasozleri', name: 'Deyim & Atasözleri', icon: '💭' },
-      { id: 'tamlamalar', name: 'Tamlamalar', icon: '🔗' },
       { id: 'soz_sanatlari', name: 'Söz Sanatları', icon: '🎨' },
-      { id: 'anlatim_bozuklugu', name: 'Anlatım Bozukluğu', icon: '⚠️' },
-      { id: 'sozel_mantik', name: 'Sözel Mantık', icon: '🧩' },
     ],
   },
   {
@@ -79,18 +71,12 @@ export const SUBJECTS: SubjectInfo[] = [
       { id: 'denklemler', name: 'Denklemler', icon: '⚖️' },
       { id: 'oran_oranti', name: 'Oran-Orantı', icon: '📊' },
       { id: 'olasilik', name: 'Olasılık', icon: '🎲' },
-      // ─── YENİ EKLEDİKLERİMİZ ───
       { id: 'ebob_ekok', name: 'EBOB-EKOK', icon: '🔍' },
-      { id: 'uslu_ifadeler', name: 'Üslü İfadeler', icon: '📈' },
       { id: 'karekok', name: 'Kareköklü İfadeler', icon: '√' },
-      { id: 'karekoklu_ifadeler', name: 'Kareköklü İfadeler', icon: '√' },
       { id: 'veri_analizi', name: 'Veri Analizi', icon: '📊' },
       { id: 'cebirsel_ifadeler', name: 'Cebirsel İfadeler', icon: 'x²' },
-      { id: 'dogrusel_denklem', name: 'Doğrusal Denklemler', icon: 'y = mx + n' },
-      { id: 'dogrusal_denklemler', name: 'Doğrusal Denklemler', icon: 'y = mx + n' },
       { id: 'koordinat', name: 'Koordinat Sistemi', icon: '🗺️' },
       { id: 'esitsizlik', name: 'Eşitsizlikler', icon: '< >' },
-      { id: 'esitsizlikler', name: 'Eşitsizlikler', icon: '< >' },
       { id: 'ucgenler', name: 'Üçgenler & Pisagor', icon: '△' },
       { id: 'oteleme_yansima', name: 'Öteleme & Yansıma', icon: '↔️' },
       { id: 'prizmalar', name: 'Prizmalar & Geometrik Cisimler', icon: '⬛' },
@@ -102,24 +88,17 @@ export const SUBJECTS: SubjectInfo[] = [
     icon: '🔬',
     gradient: 'gradient-fen',
     topics: [
-      // Mevcut olanları koruduk + yenileri ekledik
       { id: 'madde', name: 'Madde ve Özellikleri', icon: '🧪' },
       { id: 'canlilar', name: 'Canlılar Dünyası', icon: '🌿' },
       { id: 'kuvvet', name: 'Kuvvet ve Hareket', icon: '🏋️' },
       { id: 'elektrik', name: 'Elektrik', icon: '⚡' },
       { id: 'isik_ses', name: 'Işık ve Ses', icon: '💡' },
       { id: 'dunya_uzay', name: 'Dünya ve Uzay', icon: '🌍' },
-      { id: 'kimya', name: 'Kimyasal Değişimler', icon: '⚗️' },
       { id: 'ekosistem', name: 'Ekosistem', icon: '🌳' },
-      // ─── YENİ EKLEDİKLERİMİZ ───
       { id: 'mevsimler_ve_iklim', name: 'Mevsimler ve İklim', icon: '☀️❄️' },
       { id: 'dna_genetik_kod', name: 'DNA ve Genetik Kod', icon: '🧬' },
-      { id: 'basinc', name: 'Basınç (Katı-Sıvı-Gaz)', icon: '📏' },
-      { id: 'periyodik_sistem', name: 'Periyodik Sistem', icon: '🧪' },
-      { id: 'kimyasal_tepkime', name: 'Kimyasal & Fiziksel Tepkimeler', icon: '🔥' },
-      { id: 'asit_baz', name: 'Asitler ve Bazlar', icon: '🧪' },
+      { id: 'basinc', name: 'Basınç', icon: '📏' },
       { id: 'basit_makineler', name: 'Basit Makineler', icon: '⚙️' },
-      { id: 'canlilar_besin', name: 'Canlılar & Besin Zinciri', icon: '🍃' },
     ],
   },
   {
@@ -132,7 +111,6 @@ export const SUBJECTS: SubjectInfo[] = [
       { id: 'tbmm', name: 'TBMM', icon: '🏛️' },
       { id: 'antlasmalar', name: 'Antlaşmalar', icon: '📜' },
       { id: 'milli_mucadele', name: 'Milli Mücadele', icon: '🎖️' },
-      { id: 'cok_partili', name: 'Çok Partili Hayat', icon: '🗳️' },
     ],
   },
   {
@@ -2159,6 +2137,214 @@ export const questions: Question[] = [
   { id: 'yn_tr_h002', subject: 'tarih', topic: 'kurtulus_savasi', difficulty: 'zor', type: 'yeni_nesil',
     paragraph: '"19 Mayıs 1919\'da Samsun\'a çıkan Mustafa Kemal, Amasya Genelgesi, Erzurum Kongresi ve Sivas Kongresi ile milli mücadelenin temellerini attı. Bu süreçte alınan kararlar, milli iradeye dayalı bir yönetim anlayışını ortaya koyuyordu."',
     question: '"Milletin istiklalini yine milletin azim ve kararı kurtaracaktır" sözü hangi belgede yer alır?', options: ['Erzurum Kongresi', 'Amasya Genelgesi', 'Sivas Kongresi', 'Misak-ı Milli'], correctIndex: 1, explanation: 'Bu söz Amasya Genelgesi\'nde yer alır.', tags: ['amasya', 'genelge'] },
+
+
+  // ═══════════════ EKSİK KONULAR İÇİN EK SORULAR ═══════════════
+  // Tarih: Cumhuriyet
+  { id: 'th_cum_k1', subject: 'tarih', topic: 'cumhuriyet', difficulty: 'kolay', question: 'Cumhuriyet hangi tarihte ilan edilmiştir?', options: ['29 Ekim 1923', '23 Nisan 1920', '30 Ağustos 1922', '19 Mayıs 1919'], correctIndex: 0, explanation: '29 Ekim 1923', tags: ['tarih'] },
+  { id: 'th_cum_k2', subject: 'tarih', topic: 'cumhuriyet', difficulty: 'kolay', question: 'İlk cumhurbaşkanı kimdir?', options: ['İsmet İnönü', 'Mustafa Kemal Atatürk', 'Celal Bayar', 'Fevzi Çakmak'], correctIndex: 1, explanation: 'Mustafa Kemal Atatürk', tags: ['cumhurbaşkanı'] },
+  { id: 'th_cum_k3', subject: 'tarih', topic: 'cumhuriyet', difficulty: 'kolay', question: 'İlk başbakan kimdir?', options: ['Atatürk', 'İsmet İnönü', 'Kazım Karabekir', 'Refet Bele'], correctIndex: 1, explanation: 'İsmet İnönü', tags: ['başbakan'] },
+  { id: 'th_cum_o1', subject: 'tarih', topic: 'cumhuriyet', difficulty: 'orta', question: 'Cumhuriyetin ilanı hangi sorunu çözmüştür?', options: ['Devlet başkanlığı sorunu', 'Toprak sorunu', 'Ekonomik kriz', 'Eğitim sorunu'], correctIndex: 0, explanation: 'Devletin başkanının kim olacağı sorunu çözüldü', tags: ['sorun'] },
+  { id: 'th_cum_o2', subject: 'tarih', topic: 'cumhuriyet', difficulty: 'orta', question: 'Halifelik ne zaman kaldırılmıştır?', options: ['1922', '1923', '1924', '1925'], correctIndex: 2, explanation: '3 Mart 1924', tags: ['halifelik'] },
+  { id: 'th_cum_o3', subject: 'tarih', topic: 'cumhuriyet', difficulty: 'orta', question: 'Cumhuriyetin ilanından sonra başkent neresidir?', options: ['İstanbul', 'Ankara', 'İzmir', 'Bursa'], correctIndex: 1, explanation: 'Ankara', tags: ['başkent'] },
+  { id: 'th_cum_z1', subject: 'tarih', topic: 'cumhuriyet', difficulty: 'zor', question: 'Cumhuriyetle egemenlik kime geçmiştir?', options: ['Padişaha', 'Millete', 'Orduya', 'Hükümete'], correctIndex: 1, explanation: 'Egemenlik kayıtsız şartsız milletindir', tags: ['egemenlik'] },
+  { id: 'th_cum_z2', subject: 'tarih', topic: 'cumhuriyet', difficulty: 'zor', question: 'Saltanat ne zaman kaldırılmıştır?', options: ['1 Kasım 1922', '29 Ekim 1923', '3 Mart 1924', '30 Ağustos 1922'], correctIndex: 0, explanation: '1 Kasım 1922', tags: ['saltanat'] },
+  { id: 'th_cum_z3', subject: 'tarih', topic: 'cumhuriyet', difficulty: 'zor', question: 'Cumhuriyet Halk Fırkası ne zaman kurulmuştur?', options: ['1923', '1924', '1925', '1922'], correctIndex: 0, explanation: '9 Eylül 1923', tags: ['parti'] },
+  // Tarih: İnkılaplar
+  { id: 'th_ink_k1', subject: 'tarih', topic: 'inkilaplar', difficulty: 'kolay', question: 'Harf İnkılabı hangi yıl gerçekleştirilmiştir?', options: ['1926', '1927', '1928', '1929'], correctIndex: 2, explanation: '1928', tags: ['harf'] },
+  { id: 'th_ink_k2', subject: 'tarih', topic: 'inkilaplar', difficulty: 'kolay', question: 'Soyadı Kanunu hangi yıl kabul edilmiştir?', options: ['1932', '1933', '1934', '1935'], correctIndex: 2, explanation: '1934', tags: ['soyadı'] },
+  { id: 'th_ink_k3', subject: 'tarih', topic: 'inkilaplar', difficulty: 'kolay', question: 'Medeni Kanun hangi ülkeden alınmıştır?', options: ['Almanya', 'Fransa', 'İsviçre', 'İtalya'], correctIndex: 2, explanation: 'İsviçre', tags: ['medeni kanun'] },
+  { id: 'th_ink_o1', subject: 'tarih', topic: 'inkilaplar', difficulty: 'orta', question: 'Kadınlara seçme ve seçilme hakkı ne zaman verilmiştir?', options: ['1930', '1932', '1934', '1935'], correctIndex: 2, explanation: '5 Aralık 1934', tags: ['kadın hakları'] },
+  { id: 'th_ink_o2', subject: 'tarih', topic: 'inkilaplar', difficulty: 'orta', question: 'Tevhid-i Tedrisat ne anlama gelir?', options: ['Öğretim birliği', 'Vergi birliği', 'Hukuk birliği', 'Dil birliği'], correctIndex: 0, explanation: 'Eğitim birleştirildi', tags: ['eğitim'] },
+  { id: 'th_ink_o3', subject: 'tarih', topic: 'inkilaplar', difficulty: 'orta', question: 'Şapka İnkılabı hangi yıl yapılmıştır?', options: ['1923', '1924', '1925', '1926'], correctIndex: 2, explanation: '1925', tags: ['şapka'] },
+  { id: 'th_ink_z1', subject: 'tarih', topic: 'inkilaplar', difficulty: 'zor', question: 'Hangi inkılap laiklik ilkesiyle doğrudan ilgilidir?', options: ['Harf İnkılabı', 'Soyadı Kanunu', 'Halifeliğin kaldırılması', 'Takvim değişikliği'], correctIndex: 2, explanation: 'Laikliğin temeli', tags: ['laiklik'] },
+  { id: 'th_ink_z2', subject: 'tarih', topic: 'inkilaplar', difficulty: 'zor', question: 'Türk Tarih Kurumu ne zaman kurulmuştur?', options: ['1930', '1931', '1932', '1933'], correctIndex: 1, explanation: '1931', tags: ['tarih kurumu'] },
+  { id: 'th_ink_z3', subject: 'tarih', topic: 'inkilaplar', difficulty: 'zor', question: 'Türk Dil Kurumu ne zaman kurulmuştur?', options: ['1930', '1931', '1932', '1933'], correctIndex: 2, explanation: '1932', tags: ['dil kurumu'] },
+  // Tarih: TBMM
+  { id: 'th_tbmm_k1', subject: 'tarih', topic: 'tbmm', difficulty: 'kolay', question: 'TBMM ne zaman açılmıştır?', options: ['19 Mayıs 1919', '23 Nisan 1920', '29 Ekim 1923', '30 Ağustos 1922'], correctIndex: 1, explanation: '23 Nisan 1920', tags: ['açılış'] },
+  { id: 'th_tbmm_k2', subject: 'tarih', topic: 'tbmm', difficulty: 'kolay', question: 'TBMM nerede açılmıştır?', options: ['İstanbul', 'Ankara', 'İzmir', 'Sivas'], correctIndex: 1, explanation: 'Ankara', tags: ['yer'] },
+  { id: 'th_tbmm_k3', subject: 'tarih', topic: 'tbmm', difficulty: 'kolay', question: 'TBMM\'nin ilk başkanı kimdir?', options: ['İsmet İnönü', 'Kazım Karabekir', 'Mustafa Kemal', 'Fevzi Çakmak'], correctIndex: 2, explanation: 'Mustafa Kemal', tags: ['başkan'] },
+  { id: 'th_tbmm_o1', subject: 'tarih', topic: 'tbmm', difficulty: 'orta', question: 'İstiklal Marşı ne zaman kabul edilmiştir?', options: ['1920', '1921', '1922', '1923'], correctIndex: 1, explanation: '12 Mart 1921', tags: ['istiklal marşı'] },
+  { id: 'th_tbmm_o2', subject: 'tarih', topic: 'tbmm', difficulty: 'orta', question: 'TBMM ilk anayasayı ne zaman kabul etmiştir?', options: ['1920', '1921', '1922', '1923'], correctIndex: 1, explanation: '1921', tags: ['anayasa'] },
+  { id: 'th_tbmm_o3', subject: 'tarih', topic: 'tbmm', difficulty: 'orta', question: '23 Nisan hangi bayram olarak kutlanır?', options: ['Cumhuriyet', 'Ulusal Egemenlik ve Çocuk Bayramı', 'Zafer', 'Gençlik'], correctIndex: 1, explanation: 'Ulusal Egemenlik ve Çocuk Bayramı', tags: ['bayram'] },
+  { id: 'th_tbmm_z1', subject: 'tarih', topic: 'tbmm', difficulty: 'zor', question: 'TBMM\'de güçler birliği ne demektir?', options: ['Yasama, yürütme, yargı TBMM\'de', 'Ordu ve meclis birleşmesi', 'Halk ve meclis birliği', 'Parti birliği'], correctIndex: 0, explanation: 'Tüm güçler TBMM\'de', tags: ['güçler birliği'] },
+  { id: 'th_tbmm_z2', subject: 'tarih', topic: 'tbmm', difficulty: 'zor', question: 'Hıyanet-i Vataniye Kanunu ne amaçla çıkarılmıştır?', options: ['İsyanları bastırmak', 'Vergi toplamak', 'Asker toplamak', 'Barış yapmak'], correctIndex: 0, explanation: 'İç isyanları bastırmak', tags: ['kanun'] },
+  { id: 'th_tbmm_z3', subject: 'tarih', topic: 'tbmm', difficulty: 'zor', question: 'Teşkilat-ı Esasiye nedir?', options: ['1921 Anayasası', 'Parti tüzüğü', 'Ordu yönetmeliği', 'Eğitim kanunu'], correctIndex: 0, explanation: '1921 Anayasası', tags: ['anayasa'] },
+  // Tarih: Antlaşmalar
+  { id: 'th_ant_k1', subject: 'tarih', topic: 'antlasmalar', difficulty: 'kolay', question: 'Lozan Antlaşması hangi yıl imzalanmıştır?', options: ['1921', '1922', '1923', '1924'], correctIndex: 2, explanation: '1923', tags: ['lozan'] },
+  { id: 'th_ant_k2', subject: 'tarih', topic: 'antlasmalar', difficulty: 'kolay', question: 'Mondros Ateşkesi hangi yıl imzalanmıştır?', options: ['1917', '1918', '1919', '1920'], correctIndex: 1, explanation: '1918', tags: ['mondros'] },
+  { id: 'th_ant_k3', subject: 'tarih', topic: 'antlasmalar', difficulty: 'kolay', question: 'Lozan\'da Türkiye\'yi kim temsil etmiştir?', options: ['Atatürk', 'İsmet İnönü', 'Kazım Karabekir', 'Fevzi Çakmak'], correctIndex: 1, explanation: 'İsmet İnönü', tags: ['lozan'] },
+  { id: 'th_ant_o1', subject: 'tarih', topic: 'antlasmalar', difficulty: 'orta', question: 'Sevr Antlaşması yürürlüğe girmiş midir?', options: ['Evet', 'Hayır', 'Kısmen', 'Sadece Avrupa\'da'], correctIndex: 1, explanation: 'TBMM reddetti', tags: ['sevr'] },
+  { id: 'th_ant_o2', subject: 'tarih', topic: 'antlasmalar', difficulty: 'orta', question: 'Mudanya Ateşkesi ne sağlamıştır?', options: ['İstanbul ve Trakya savaşsız kurtarıldı', 'Barış', 'Ekonomik destek', 'Toprak kaybı'], correctIndex: 0, explanation: 'Savaşmadan geri alındı', tags: ['mudanya'] },
+  { id: 'th_ant_o3', subject: 'tarih', topic: 'antlasmalar', difficulty: 'orta', question: 'Ankara Antlaşması kimlerle yapılmıştır?', options: ['İngiltere', 'Fransa', 'İtalya', 'Yunanistan'], correctIndex: 1, explanation: 'Fransa ile', tags: ['ankara'] },
+  { id: 'th_ant_z1', subject: 'tarih', topic: 'antlasmalar', difficulty: 'zor', question: 'Lozan\'da kapitülasyonlar ne olmuştur?', options: ['Devam etti', 'Tamamen kaldırıldı', 'Kısmen devam', 'Ertelendi'], correctIndex: 1, explanation: 'Tamamen kaldırıldı', tags: ['kapitülasyonlar'] },
+  { id: 'th_ant_z2', subject: 'tarih', topic: 'antlasmalar', difficulty: 'zor', question: 'Montrö Boğazlar Sözleşmesi hangi yıldır?', options: ['1934', '1935', '1936', '1937'], correctIndex: 2, explanation: '1936', tags: ['montrö'] },
+  { id: 'th_ant_z3', subject: 'tarih', topic: 'antlasmalar', difficulty: 'zor', question: 'Hatay ne zaman Türkiye\'ye katılmıştır?', options: ['1936', '1937', '1938', '1939'], correctIndex: 3, explanation: '1939', tags: ['hatay'] },
+  // Tarih: Milli Mücadele
+  { id: 'th_mm_k1', subject: 'tarih', topic: 'milli_mucadele', difficulty: 'kolay', question: 'Milli Mücadele ne zaman başlamıştır?', options: ['19 Mayıs 1919', '23 Nisan 1920', '29 Ekim 1923', '30 Ağustos 1922'], correctIndex: 0, explanation: 'Samsun\'a çıkış', tags: ['başlangıç'] },
+  { id: 'th_mm_k2', subject: 'tarih', topic: 'milli_mucadele', difficulty: 'kolay', question: 'Büyük Taarruz ne zaman yapılmıştır?', options: ['1920', '1921', '1922', '1923'], correctIndex: 2, explanation: '1922', tags: ['taarruz'] },
+  { id: 'th_mm_k3', subject: 'tarih', topic: 'milli_mucadele', difficulty: 'kolay', question: '30 Ağustos ne bayramıdır?', options: ['Cumhuriyet', 'Zafer', 'Egemenlik', 'Gençlik'], correctIndex: 1, explanation: 'Zafer Bayramı', tags: ['bayram'] },
+  { id: 'th_mm_o1', subject: 'tarih', topic: 'milli_mucadele', difficulty: 'orta', question: 'Sakarya Savaşı sonrası Atatürk\'e verilen unvan?', options: ['Paşa', 'Mareşal', 'Gazi', 'Başkomutan'], correctIndex: 2, explanation: 'Gazi', tags: ['unvan'] },
+  { id: 'th_mm_o2', subject: 'tarih', topic: 'milli_mucadele', difficulty: 'orta', question: 'Tekalif-i Milliye Emirleri ne amaçla çıkarılmıştır?', options: ['Orduyu donatmak', 'Vergi toplamak', 'Barış yapmak', 'Meclisi açmak'], correctIndex: 0, explanation: 'Ordunun ihtiyaçları', tags: ['emir'] },
+  { id: 'th_mm_o3', subject: 'tarih', topic: 'milli_mucadele', difficulty: 'orta', question: 'I. İnönü Muharebesi kime karşı yapılmıştır?', options: ['Fransa', 'İngiltere', 'Yunanistan', 'İtalya'], correctIndex: 2, explanation: 'Yunanistan', tags: ['inönü'] },
+  { id: 'th_mm_z1', subject: 'tarih', topic: 'milli_mucadele', difficulty: 'zor', question: 'Misak-ı Milli ne zaman kabul edilmiştir?', options: ['12 Ocak 1920', '28 Ocak 1920', '23 Nisan 1920', '1 Kasım 1920'], correctIndex: 1, explanation: '28 Ocak 1920', tags: ['misak-ı milli'] },
+  { id: 'th_mm_z2', subject: 'tarih', topic: 'milli_mucadele', difficulty: 'zor', question: 'Erzurum Kongresi\'nde alınan en önemli karar?', options: ['Manda ve himaye reddedildi', 'Ateşkes yapıldı', 'Savaş ilan edildi', 'Meclis açıldı'], correctIndex: 0, explanation: 'Manda ve himaye reddedildi', tags: ['kongre'] },
+  { id: 'th_mm_z3', subject: 'tarih', topic: 'milli_mucadele', difficulty: 'zor', question: 'Sivas Kongresi\'nin önemi nedir?', options: ['Tüm cemiyetler birleştirildi', 'Savaş ilan edildi', 'Ateşkes yapıldı', 'Anayasa kabul edildi'], correctIndex: 0, explanation: 'Cemiyetler birleştirildi', tags: ['kongre'] },
+  // Tarih: Atatürk İlkeleri
+  { id: 'th_ai_k1', subject: 'tarih', topic: 'ataturk_ilkeleri', difficulty: 'kolay', question: 'Atatürk ilkeleri kaç tanedir?', options: ['4', '5', '6', '7'], correctIndex: 2, explanation: '6', tags: ['ilke'] },
+  { id: 'th_ai_k2', subject: 'tarih', topic: 'ataturk_ilkeleri', difficulty: 'kolay', question: 'Laiklik ilkesi ne demektir?', options: ['Din ve devlet işlerinin ayrılması', 'Dinsizlik', 'Tek din', 'Din zorunluluğu'], correctIndex: 0, explanation: 'Din ve devlet ayrılığı', tags: ['laiklik'] },
+  { id: 'th_ai_k3', subject: 'tarih', topic: 'ataturk_ilkeleri', difficulty: 'kolay', question: 'Cumhuriyetçilik ilkesi neyi savunur?', options: ['Halk egemenliğini', 'Tek parti yönetimi', 'Din devlet birliği', 'Krallık'], correctIndex: 0, explanation: 'Egemenlik halka ait', tags: ['cumhuriyetçilik'] },
+  { id: 'th_ai_o1', subject: 'tarih', topic: 'ataturk_ilkeleri', difficulty: 'orta', question: 'Halkçılık ilkesinin temel amacı?', options: ['Halk arasında eşitlik', 'Zenginlerin korunması', 'Sınıf ayrımı', 'Tek parti'], correctIndex: 0, explanation: 'Toplumda eşitlik', tags: ['halkçılık'] },
+  { id: 'th_ai_o2', subject: 'tarih', topic: 'ataturk_ilkeleri', difficulty: 'orta', question: 'İnkılapçılık ilkesi neyi savunur?', options: ['Çağdaşlaşma', 'Geleneklere bağlılık', 'Değişime karşı olma', 'Eski düzen'], correctIndex: 0, explanation: 'Sürekli yenileşme', tags: ['inkılapçılık'] },
+  { id: 'th_ai_o3', subject: 'tarih', topic: 'ataturk_ilkeleri', difficulty: 'orta', question: 'Devletçilik ilkesi hangi alanla ilgilidir?', options: ['Ekonomi', 'Eğitim', 'Sağlık', 'Askerlik'], correctIndex: 0, explanation: 'Ekonomi', tags: ['devletçilik'] },
+  { id: 'th_ai_z1', subject: 'tarih', topic: 'ataturk_ilkeleri', difficulty: 'zor', question: '"Yurtta sulh cihanda sulh" hangi ilkeyle ilgilidir?', options: ['Milliyetçilik', 'Cumhuriyetçilik', 'Barışçılık (bütünleyici)', 'Devletçilik'], correctIndex: 2, explanation: 'Barışçılık bütünleyici ilke', tags: ['barış'] },
+  { id: 'th_ai_z2', subject: 'tarih', topic: 'ataturk_ilkeleri', difficulty: 'zor', question: 'Atatürk ilkeleri anayasaya ilk ne zaman girmiştir?', options: ['1921', '1924', '1937', '1938'], correctIndex: 2, explanation: '1937', tags: ['anayasa'] },
+  { id: 'th_ai_z3', subject: 'tarih', topic: 'ataturk_ilkeleri', difficulty: 'zor', question: '"Egemenlik kayıtsız şartsız milletindir" hangi ilke?', options: ['Cumhuriyetçilik', 'Milliyetçilik', 'Halkçılık', 'İnkılapçılık'], correctIndex: 0, explanation: 'Cumhuriyetçilik', tags: ['cumhuriyetçilik'] },
+  // Fen: Elektrik
+  { id: 'fn_el_k1', subject: 'fen', topic: 'elektrik', difficulty: 'kolay', question: 'Elektrik akımının birimi nedir?', options: ['Volt', 'Amper', 'Ohm', 'Watt'], correctIndex: 1, explanation: 'Amper', tags: ['birim'] },
+  { id: 'fn_el_k2', subject: 'fen', topic: 'elektrik', difficulty: 'kolay', question: 'Hangisi iletken malzemedir?', options: ['Plastik', 'Cam', 'Bakır', 'Kauçuk'], correctIndex: 2, explanation: 'Metaller iletken', tags: ['iletken'] },
+  { id: 'fn_el_k3', subject: 'fen', topic: 'elektrik', difficulty: 'kolay', question: 'Gerilimin birimi nedir?', options: ['Amper', 'Volt', 'Ohm', 'Watt'], correctIndex: 1, explanation: 'Volt', tags: ['birim'] },
+  { id: 'fn_el_o1', subject: 'fen', topic: 'elektrik', difficulty: 'orta', question: 'Ohm kanunu formülü nedir?', options: ['V = I × R', 'I = V × R', 'R = V × I', 'P = V × I'], correctIndex: 0, explanation: 'V = I × R', tags: ['ohm'] },
+  { id: 'fn_el_o2', subject: 'fen', topic: 'elektrik', difficulty: 'orta', question: 'Seri devrede akım nasıl değişir?', options: ['Her yerde aynı', 'Azalır', 'Artar', 'Sıfır'], correctIndex: 0, explanation: 'Seri devrede akım sabit', tags: ['seri'] },
+  { id: 'fn_el_o3', subject: 'fen', topic: 'elektrik', difficulty: 'orta', question: 'Paralel devrede gerilim nasıl değişir?', options: ['Her kolda aynı', 'Azalır', 'Artar', 'Sıfır'], correctIndex: 0, explanation: 'Paralel devrede gerilim eşit', tags: ['paralel'] },
+  { id: 'fn_el_z1', subject: 'fen', topic: 'elektrik', difficulty: 'zor', question: '10 ve 20 ohm seri bağlanırsa toplam direnç?', options: ['30 ohm', '15 ohm', '10 ohm', '6.67 ohm'], correctIndex: 0, explanation: 'R = R1 + R2 = 30', tags: ['seri'] },
+  { id: 'fn_el_z2', subject: 'fen', topic: 'elektrik', difficulty: 'zor', question: '12V ve 4 ohm devrede akım kaç amper?', options: ['2', '3', '4', '48'], correctIndex: 1, explanation: 'I = 12/4 = 3A', tags: ['ohm'] },
+  { id: 'fn_el_z3', subject: 'fen', topic: 'elektrik', difficulty: 'zor', question: 'Elektrik enerjisi formülü nedir?', options: ['E = P × t', 'E = V × I', 'E = I × R', 'E = V / R'], correctIndex: 0, explanation: 'E = P × t', tags: ['enerji'] },
+  // Fen: Işık ve Ses
+  { id: 'fn_is_k1', subject: 'fen', topic: 'isik_ses', difficulty: 'kolay', question: 'Ses boşlukta yayılır mı?', options: ['Evet', 'Hayır', 'Bazen', 'Yüksek seste'], correctIndex: 1, explanation: 'Ses maddesel ortam gerektirir', tags: ['ses'] },
+  { id: 'fn_is_k2', subject: 'fen', topic: 'isik_ses', difficulty: 'kolay', question: 'Hangisi ışık kaynağıdır?', options: ['Ay', 'Güneş', 'Gezegen', 'Ayna'], correctIndex: 1, explanation: 'Güneş kendi ışığını üretir', tags: ['kaynak'] },
+  { id: 'fn_is_k3', subject: 'fen', topic: 'isik_ses', difficulty: 'kolay', question: 'Sesin en hızlı yayıldığı ortam?', options: ['Hava', 'Su', 'Katı', 'Boşluk'], correctIndex: 2, explanation: 'Katı ortamda en hızlı', tags: ['hız'] },
+  { id: 'fn_is_o1', subject: 'fen', topic: 'isik_ses', difficulty: 'orta', question: 'Düz aynada görüntü nasıldır?', options: ['Ters', 'Aynı boyutta ve dik', 'Büyük', 'Küçük'], correctIndex: 1, explanation: 'Aynı boyut dik görüntü', tags: ['ayna'] },
+  { id: 'fn_is_o2', subject: 'fen', topic: 'isik_ses', difficulty: 'orta', question: 'Yankı ne demektir?', options: ['Sesin yansıması', 'Işığın kırılması', 'Sesin soğurulması', 'Işığın soğurulması'], correctIndex: 0, explanation: 'Sesin geri duyulması', tags: ['yankı'] },
+  { id: 'fn_is_o3', subject: 'fen', topic: 'isik_ses', difficulty: 'orta', question: 'Işığın hızı yaklaşık kaç km/s?', options: ['100.000', '200.000', '300.000', '400.000'], correctIndex: 2, explanation: '300.000 km/s', tags: ['hız'] },
+  { id: 'fn_is_z1', subject: 'fen', topic: 'isik_ses', difficulty: 'zor', question: 'Işığın kırılma sebebi nedir?', options: ['Hız değişimi', 'Renk değişimi', 'Sıcaklık', 'Basınç'], correctIndex: 0, explanation: 'Farklı ortamlarda hız değişir', tags: ['kırılma'] },
+  { id: 'fn_is_z2', subject: 'fen', topic: 'isik_ses', difficulty: 'zor', question: 'Sesin frekansı artarsa ne olur?', options: ['İnce ses çıkar', 'Kalın ses çıkar', 'Ses yavaşlar', 'Ses hızlanır'], correctIndex: 0, explanation: 'Yüksek frekans = tiz ses', tags: ['frekans'] },
+  { id: 'fn_is_z3', subject: 'fen', topic: 'isik_ses', difficulty: 'zor', question: 'Sesin genliği artarsa ne olur?', options: ['Ses şiddeti artar', 'Ses incelir', 'Frekans artar', 'Ses yavaşlar'], correctIndex: 0, explanation: 'Genlik → şiddet', tags: ['genlik'] },
+  // Fen: Dünya ve Uzay
+  { id: 'fn_du_k1', subject: 'fen', topic: 'dunya_uzay', difficulty: 'kolay', question: 'Güneş bir yıldız mıdır?', options: ['Evet', 'Hayır', 'Gezegen', 'Uydu'], correctIndex: 0, explanation: 'Güneş bir yıldız', tags: ['yıldız'] },
+  { id: 'fn_du_k2', subject: 'fen', topic: 'dunya_uzay', difficulty: 'kolay', question: 'Ay Dünya\'nın nesidir?', options: ['Gezegen', 'Yıldız', 'Doğal uydu', 'Güneş'], correctIndex: 2, explanation: 'Doğal uydu', tags: ['uydu'] },
+  { id: 'fn_du_k3', subject: 'fen', topic: 'dunya_uzay', difficulty: 'kolay', question: 'Güneş sistemimizde kaç gezegen var?', options: ['7', '8', '9', '10'], correctIndex: 1, explanation: '8 gezegen', tags: ['gezegen'] },
+  { id: 'fn_du_o1', subject: 'fen', topic: 'dunya_uzay', difficulty: 'orta', question: 'Dünya\'nın kendi etrafında dönmesi neye sebep olur?', options: ['Mevsimlere', 'Gece-gündüze', 'Gel-gitlere', 'Yağışlara'], correctIndex: 1, explanation: 'Gece-gündüz', tags: ['dönme'] },
+  { id: 'fn_du_o2', subject: 'fen', topic: 'dunya_uzay', difficulty: 'orta', question: 'En büyük gezegen hangisidir?', options: ['Satürn', 'Jüpiter', 'Uranüs', 'Neptün'], correctIndex: 1, explanation: 'Jüpiter', tags: ['gezegen'] },
+  { id: 'fn_du_o3', subject: 'fen', topic: 'dunya_uzay', difficulty: 'orta', question: 'Ay tutulması nasıl oluşur?', options: ['Dünya Güneş ile Ay arasına girer', 'Ay Dünya ile Güneş arasına girer', 'Güneş kaybolur', 'Ay kaybolur'], correctIndex: 0, explanation: 'Dünya gölgesi Ay\'a düşer', tags: ['tutulma'] },
+  { id: 'fn_du_z1', subject: 'fen', topic: 'dunya_uzay', difficulty: 'zor', question: 'Işık yılı ne demektir?', options: ['Işığın 1 yılda aldığı yol', '1 yıl', 'Güneş\'in ömrü', 'Ay\'ın ömrü'], correctIndex: 0, explanation: 'Uzaklık birimi', tags: ['birim'] },
+  { id: 'fn_du_z2', subject: 'fen', topic: 'dunya_uzay', difficulty: 'zor', question: 'Samanyolu nedir?', options: ['Bir gezegen', 'Bizim galaksimiz', 'Bir yıldız', 'Bir uydu'], correctIndex: 1, explanation: 'Bizim galaksimiz', tags: ['galaksi'] },
+  { id: 'fn_du_z3', subject: 'fen', topic: 'dunya_uzay', difficulty: 'zor', question: 'Mars\'a neden "Kızıl Gezegen" denir?', options: ['Sıcak', 'Demir oksit yüzeyi', 'Güneş\'e yakın', 'Suyundan'], correctIndex: 1, explanation: 'Yüzeyindeki demir oksit', tags: ['mars'] },
+  // Fen: Basit Makineler
+  { id: 'fn_bm_k1', subject: 'fen', topic: 'basit_makineler', difficulty: 'kolay', question: 'Hangisi basit makinedir?', options: ['Kaldıraç', 'Araba', 'Bilgisayar', 'Televizyon'], correctIndex: 0, explanation: 'Kaldıraç', tags: ['basit makine'] },
+  { id: 'fn_bm_k2', subject: 'fen', topic: 'basit_makineler', difficulty: 'kolay', question: 'Eğik düzlem ne işe yarar?', options: ['Kuvvetten kazanç', 'Hız artırır', 'Sürtünme azaltır', 'Enerji üretir'], correctIndex: 0, explanation: 'Daha az kuvvetle yükseltme', tags: ['eğik düzlem'] },
+  { id: 'fn_bm_k3', subject: 'fen', topic: 'basit_makineler', difficulty: 'kolay', question: 'Basit makineler işten kazanç sağlar mı?', options: ['Hayır', 'Evet', 'Bazen', 'Sadece kaldıraçta'], correctIndex: 0, explanation: 'İşten kazanç sağlamaz, kuvvetten kazanç sağlar', tags: ['temel'] },
+  { id: 'fn_bm_o1', subject: 'fen', topic: 'basit_makineler', difficulty: 'orta', question: 'Sabit makarada kuvvetten kazanç var mıdır?', options: ['Hayır, yön değiştirir', 'Evet, 2 kat', 'Evet, 3 kat', 'Bazen'], correctIndex: 0, explanation: 'Sadece yön değiştirir', tags: ['makara'] },
+  { id: 'fn_bm_o2', subject: 'fen', topic: 'basit_makineler', difficulty: 'orta', question: 'Hareketli makarada kuvvetten kazanç kaç kat?', options: ['1', '2', '3', '4'], correctIndex: 1, explanation: '2 kat', tags: ['makara'] },
+  { id: 'fn_bm_o3', subject: 'fen', topic: 'basit_makineler', difficulty: 'orta', question: 'Vida hangi basit makinenin uygulamasıdır?', options: ['Eğik düzlem', 'Kaldıraç', 'Makara', 'Çark'], correctIndex: 0, explanation: 'Eğik düzlem uygulaması', tags: ['vida'] },
+  { id: 'fn_bm_z1', subject: 'fen', topic: 'basit_makineler', difficulty: 'zor', question: 'Palangada 4 makara varsa kuvvetten kazanç kaç?', options: ['2', '3', '4', '8'], correctIndex: 2, explanation: '4 kat', tags: ['palanga'] },
+  { id: 'fn_bm_z2', subject: 'fen', topic: 'basit_makineler', difficulty: 'zor', question: 'Kaldıraçta kuvvet kolu uzadıkça ne olur?', options: ['Kuvvet azalır', 'Kuvvet artar', 'Değişmez', 'İş artar'], correctIndex: 0, explanation: 'F × d_kuvvet = G × d_yük', tags: ['kaldıraç'] },
+  { id: 'fn_bm_z3', subject: 'fen', topic: 'basit_makineler', difficulty: 'zor', question: 'El arabası kaçıncı tür kaldıraçtır?', options: ['1. tür', '2. tür', '3. tür', 'Kaldıraç değil'], correctIndex: 2, explanation: 'Kuvvet ortada', tags: ['kaldıraç'] },
+  // Din ek sorular (tüm konular minimum 3 test)
+  { id: 'dn_ib_k1', subject: 'din', topic: 'ibadet', difficulty: 'kolay', question: 'İslam\'ın şartı kaçtır?', options: ['4', '5', '6', '7'], correctIndex: 1, explanation: '5', tags: ['şart'] },
+  { id: 'dn_ib_k2', subject: 'din', topic: 'ibadet', difficulty: 'kolay', question: 'Günde kaç vakit namaz kılınır?', options: ['3', '4', '5', '6'], correctIndex: 2, explanation: '5 vakit', tags: ['namaz'] },
+  { id: 'dn_ib_k3', subject: 'din', topic: 'ibadet', difficulty: 'kolay', question: 'Ramazan ayında tutulan ibadete ne denir?', options: ['Namaz', 'Oruç', 'Hac', 'Zekat'], correctIndex: 1, explanation: 'Oruç', tags: ['oruç'] },
+  { id: 'dn_ib_o1', subject: 'din', topic: 'ibadet', difficulty: 'orta', question: 'Hac ibadeti hangi ayda yapılır?', options: ['Ramazan', 'Zilhicce', 'Muharrem', 'Recep'], correctIndex: 1, explanation: 'Zilhicce', tags: ['hac'] },
+  { id: 'dn_ib_o2', subject: 'din', topic: 'ibadet', difficulty: 'orta', question: 'Namaz kılmak için ne gereklidir?', options: ['Abdest', 'Oruç', 'Zekat', 'Hac'], correctIndex: 0, explanation: 'Abdest', tags: ['abdest'] },
+  { id: 'dn_ib_o3', subject: 'din', topic: 'ibadet', difficulty: 'orta', question: 'Kelime-i şehadet ne ifade eder?', options: ['Allah\'ın birliği ve Hz. Muhammed\'in peygamberliği', 'Dua', 'Namaz', 'Oruç'], correctIndex: 0, explanation: 'Tanıklık', tags: ['şehadet'] },
+  { id: 'dn_ib_z1', subject: 'din', topic: 'ibadet', difficulty: 'zor', question: 'Zekat nisabı ne demektir?', options: ['Zekat miktarı', 'Zekatın farz olduğu minimum mal', 'Verme süresi', 'Alma şartı'], correctIndex: 1, explanation: 'Zenginlik ölçüsü', tags: ['zekat'] },
+  { id: 'dn_ib_z2', subject: 'din', topic: 'ibadet', difficulty: 'zor', question: 'İtikaf nedir?', options: ['Namaz türü', 'Camide ibadete çekilme', 'Oruç türü', 'Hac ibadeti'], correctIndex: 1, explanation: 'Camide kalarak ibadet', tags: ['itikaf'] },
+  { id: 'dn_ib_z3', subject: 'din', topic: 'ibadet', difficulty: 'zor', question: 'Sadaka-i fıtır ne zaman verilir?', options: ['Ramazan bayramından önce', 'Kurban bayramında', 'Her ay', 'Her cuma'], correctIndex: 0, explanation: 'Bayram namazından önce', tags: ['fitre'] },
+  { id: 'dn_kr_k1', subject: 'din', topic: 'kuran', difficulty: 'kolay', question: 'Kur\'an kaç sureden oluşur?', options: ['100', '110', '114', '120'], correctIndex: 2, explanation: '114 sure', tags: ['sure'] },
+  { id: 'dn_kr_k2', subject: 'din', topic: 'kuran', difficulty: 'kolay', question: 'Kur\'an\'ın ilk suresi hangisidir?', options: ['Bakara', 'Fatiha', 'Nas', 'İhlas'], correctIndex: 1, explanation: 'Fatiha', tags: ['sure'] },
+  { id: 'dn_kr_k3', subject: 'din', topic: 'kuran', difficulty: 'kolay', question: 'Kur\'an hangi dilde indirilmiştir?', options: ['Türkçe', 'Farsça', 'Arapça', 'İbranice'], correctIndex: 2, explanation: 'Arapça', tags: ['dil'] },
+  { id: 'dn_kr_o1', subject: 'din', topic: 'kuran', difficulty: 'orta', question: 'En uzun sure hangisidir?', options: ['Fatiha', 'Bakara', 'Ali İmran', 'Nisa'], correctIndex: 1, explanation: 'Bakara', tags: ['sure'] },
+  { id: 'dn_kr_o2', subject: 'din', topic: 'kuran', difficulty: 'orta', question: 'Kur\'an ilk kez kimin zamanında kitap haline getirilmiştir?', options: ['Hz. Muhammed', 'Hz. Ebubekir', 'Hz. Ömer', 'Hz. Osman'], correctIndex: 1, explanation: 'Hz. Ebubekir', tags: ['tarih'] },
+  { id: 'dn_kr_o3', subject: 'din', topic: 'kuran', difficulty: 'orta', question: 'İlk inen ayet hangi surededir?', options: ['Fatiha', 'Bakara', 'Alak', 'Müddessir'], correctIndex: 2, explanation: 'Alak suresi "İkra"', tags: ['ilk ayet'] },
+  { id: 'dn_kr_z1', subject: 'din', topic: 'kuran', difficulty: 'zor', question: 'En kısa sure hangisidir?', options: ['İhlas', 'Kevser', 'Nas', 'Felak'], correctIndex: 1, explanation: 'Kevser 3 ayet', tags: ['sure'] },
+  { id: 'dn_kr_z2', subject: 'din', topic: 'kuran', difficulty: 'zor', question: 'Ayet-el Kürsi hangi surededir?', options: ['Fatiha', 'Bakara', 'Ali İmran', 'Nisa'], correctIndex: 1, explanation: 'Bakara 255. ayet', tags: ['ayet'] },
+  { id: 'dn_kr_z3', subject: 'din', topic: 'kuran', difficulty: 'zor', question: 'Meal ne demektir?', options: ['Tam çeviri', 'Anlam olarak çeviri', 'Tefsir', 'Hadis'], correctIndex: 1, explanation: 'Anlam çevirisi', tags: ['meal'] },
+  // Peygamberler ek
+  { id: 'dn_pg_k1', subject: 'din', topic: 'peygamberler', difficulty: 'kolay', question: 'İlk peygamber kimdir?', options: ['Hz. Muhammed', 'Hz. Adem', 'Hz. İbrahim', 'Hz. Nuh'], correctIndex: 1, explanation: 'Hz. Adem', tags: ['ilk'] },
+  { id: 'dn_pg_k2', subject: 'din', topic: 'peygamberler', difficulty: 'kolay', question: 'Hz. Muhammed kaç yaşında peygamber olmuştur?', options: ['25', '30', '35', '40'], correctIndex: 3, explanation: '40 yaşında', tags: ['yaş'] },
+  { id: 'dn_pg_k3', subject: 'din', topic: 'peygamberler', difficulty: 'kolay', question: 'Hangi peygambere Zebur indirilmiştir?', options: ['Hz. İsa', 'Hz. Musa', 'Hz. Davud', 'Hz. İbrahim'], correctIndex: 2, explanation: 'Hz. Davud', tags: ['kitap'] },
+  { id: 'dn_pg_o1', subject: 'din', topic: 'peygamberler', difficulty: 'orta', question: 'Hz. Musa\'ya hangi kitap indirilmiştir?', options: ['Kur\'an', 'İncil', 'Tevrat', 'Zebur'], correctIndex: 2, explanation: 'Tevrat', tags: ['kitap'] },
+  { id: 'dn_pg_o2', subject: 'din', topic: 'peygamberler', difficulty: 'orta', question: 'Hz. Muhammed\'in doğum yılı?', options: ['570', '571', '572', '573'], correctIndex: 1, explanation: '571', tags: ['doğum'] },
+  { id: 'dn_pg_o3', subject: 'din', topic: 'peygamberler', difficulty: 'orta', question: 'Hz. İbrahim\'in lakabı?', options: ['Halilullah', 'Ruhullah', 'Kelimullah', 'Habibullah'], correctIndex: 0, explanation: 'Allah\'ın dostu', tags: ['lakap'] },
+  { id: 'dn_pg_z1', subject: 'din', topic: 'peygamberler', difficulty: 'zor', question: '"İsmet" sıfatı ne demektir?', options: ['Akıllılık', 'Günahsızlık', 'Doğruluk', 'Güvenilirlik'], correctIndex: 1, explanation: 'Günahtan korunmuşluk', tags: ['sıfat'] },
+  { id: 'dn_pg_z2', subject: 'din', topic: 'peygamberler', difficulty: 'zor', question: '"Tebliğ" sıfatı ne anlama gelir?', options: ['Allah emirlerini iletme', 'Doğruluk', 'Güvenilirlik', 'Akıllılık'], correctIndex: 0, explanation: 'İletme', tags: ['sıfat'] },
+  { id: 'dn_pg_z3', subject: 'din', topic: 'peygamberler', difficulty: 'zor', question: 'Mucize ne demektir?', options: ['Normal olay', 'Peygamberlere verilen olağanüstü olay', 'Herkesin yapabildiği', 'Doğa olayı'], correctIndex: 1, explanation: 'Olağanüstü hadise', tags: ['mucize'] },
+  // Ahlak ek
+  { id: 'dn_ah_k1', subject: 'din', topic: 'ahlak', difficulty: 'kolay', question: 'İslam\'da en önemli ahlaki değer?', options: ['Zenginlik', 'Dürüstlük', 'Güç', 'Şöhret'], correctIndex: 1, explanation: 'Dürüstlük', tags: ['dürüstlük'] },
+  { id: 'dn_ah_k2', subject: 'din', topic: 'ahlak', difficulty: 'kolay', question: 'Hangisi kötü ahlaka örnektir?', options: ['Yardımseverlik', 'Hoşgörü', 'Dedikodu', 'Saygı'], correctIndex: 2, explanation: 'Dedikodu kötü', tags: ['kötü ahlak'] },
+  { id: 'dn_ah_o1', subject: 'din', topic: 'ahlak', difficulty: 'orta', question: 'Hangisi ahlaki erdemlerden biri değildir?', options: ['Sabır', 'Şükür', 'Kibir', 'Tevazu'], correctIndex: 2, explanation: 'Kibir kötü huy', tags: ['erdem'] },
+  { id: 'dn_ah_o2', subject: 'din', topic: 'ahlak', difficulty: 'orta', question: 'Komşu hakkı neden önemlidir?', options: ['Ekonomik destek', 'Toplumsal huzur', 'Güvenlik', 'Gelenek'], correctIndex: 1, explanation: 'Toplumsal barış', tags: ['komşu'] },
+  { id: 'dn_ah_z1', subject: 'din', topic: 'ahlak', difficulty: 'zor', question: 'Gıybet ne demektir?', options: ['Yüze karşı konuşma', 'Arkasından hoşlanmayacağı şeyleri söyleme', 'Yalan söyleme', 'İftira'], correctIndex: 1, explanation: 'Arkadan konuşma', tags: ['gıybet'] },
+  { id: 'dn_ah_z2', subject: 'din', topic: 'ahlak', difficulty: 'zor', question: 'Riya ne demektir?', options: ['Gösteriş için ibadet', 'Samimi ibadet', 'Yardımseverlik', 'Cömertlik'], correctIndex: 0, explanation: 'Gösteriş amaçlı', tags: ['riya'] },
+  // İslam Tarihi ek
+  { id: 'dn_it_k1', subject: 'din', topic: 'islam_tarihi', difficulty: 'kolay', question: 'İlk göç nereye yapılmıştır?', options: ['Medine', 'Habeşistan', 'Kudüs', 'Mısır'], correctIndex: 1, explanation: 'Habeşistan', tags: ['göç'] },
+  { id: 'dn_it_k2', subject: 'din', topic: 'islam_tarihi', difficulty: 'kolay', question: 'Hz. Muhammed nerede vefat etmiştir?', options: ['Mekke', 'Medine', 'Kudüs', 'Taif'], correctIndex: 1, explanation: 'Medine', tags: ['vefat'] },
+  { id: 'dn_it_k3', subject: 'din', topic: 'islam_tarihi', difficulty: 'kolay', question: 'İlk Müslüman kadın kimdir?', options: ['Hz. Aişe', 'Hz. Hatice', 'Hz. Fatma', 'Hz. Zeynep'], correctIndex: 1, explanation: 'Hz. Hatice', tags: ['ilk'] },
+  { id: 'dn_it_o1', subject: 'din', topic: 'islam_tarihi', difficulty: 'orta', question: 'Mekke\'nin fethi hangi yıldır?', options: ['624', '625', '628', '630'], correctIndex: 3, explanation: '630', tags: ['fetih'] },
+  { id: 'dn_it_o2', subject: 'din', topic: 'islam_tarihi', difficulty: 'orta', question: 'İlk ezanı kim okumuştur?', options: ['Hz. Muhammed', 'Hz. Bilal', 'Hz. Ömer', 'Hz. Ali'], correctIndex: 1, explanation: 'Hz. Bilal', tags: ['ezan'] },
+  { id: 'dn_it_z1', subject: 'din', topic: 'islam_tarihi', difficulty: 'zor', question: 'Uhud\'da neden zor duruma düşülmüştür?', options: ['Okçuların yerini terk etmesi', 'Az asker', 'Hava durumu', 'Silah yetersizliği'], correctIndex: 0, explanation: 'Okçular', tags: ['uhud'] },
+  { id: 'dn_it_z2', subject: 'din', topic: 'islam_tarihi', difficulty: 'zor', question: 'Hendek kazma fikri kime aittir?', options: ['Hz. Muhammed', 'Selman-ı Farisi', 'Hz. Ömer', 'Hz. Ali'], correctIndex: 1, explanation: 'Selman-ı Farisi', tags: ['hendek'] },
+  // İnanç ek
+  { id: 'dn_in_k1', subject: 'din', topic: 'inanc', difficulty: 'kolay', question: 'Tevhid ne demektir?', options: ['Allah\'ın birliği', 'Çok tanrıcılık', 'İbadet', 'Ahlak'], correctIndex: 0, explanation: 'Allah\'ın tek olması', tags: ['tevhid'] },
+  { id: 'dn_in_k2', subject: 'din', topic: 'inanc', difficulty: 'kolay', question: 'Ahiret ne demektir?', options: ['Bu dünya', 'Öbür dünya', 'Geçmiş', 'Gelecek'], correctIndex: 1, explanation: 'Ölümden sonraki hayat', tags: ['ahiret'] },
+  { id: 'dn_in_o1', subject: 'din', topic: 'inanc', difficulty: 'orta', question: 'Cebrail hangi görevle bilinir?', options: ['Vahiy getirme', 'Ölüm meleği', 'Tabiat olayları', 'Sevapları yazma'], correctIndex: 0, explanation: 'Vahiy meleği', tags: ['melek'] },
+  { id: 'dn_in_o2', subject: 'din', topic: 'inanc', difficulty: 'orta', question: 'Azrail\'in görevi nedir?', options: ['Vahiy getirme', 'Can alma', 'Sevap yazma', 'Tabiat olayları'], correctIndex: 1, explanation: 'Ölüm meleği', tags: ['melek'] },
+  { id: 'dn_in_z1', subject: 'din', topic: 'inanc', difficulty: 'zor', question: 'Şirk ne demektir?', options: ['Allah\'a ortak koşma', 'İbadet etmeme', 'Güzel ahlak', 'Dua etme'], correctIndex: 0, explanation: 'En büyük günah', tags: ['şirk'] },
+  { id: 'dn_in_z2', subject: 'din', topic: 'inanc', difficulty: 'zor', question: 'Münafık kimdir?', options: ['İnancını gizleyen', 'Samimi müslüman', 'İnanmayan', 'İbadet eden'], correctIndex: 0, explanation: 'Dıştan müslüman içten inanmayan', tags: ['münafık'] },
+  // Hadis ek
+  { id: 'dn_hd_k1', subject: 'din', topic: 'hadis', difficulty: 'kolay', question: 'Sünnet ne demektir?', options: ['Hz. Muhammed\'in söz ve davranışları', 'Kur\'an ayetleri', 'Dua', 'İbadet'], correctIndex: 0, explanation: 'Peygamberin örnek hayatı', tags: ['sünnet'] },
+  { id: 'dn_hd_k2', subject: 'din', topic: 'hadis', difficulty: 'kolay', question: '"Ameller niyetlere göredir" hadisi neyi vurgular?', options: ['Niyetin önemini', 'Amelin önemsizliğini', 'Para kazanmayı', 'İbadet yapmamayı'], correctIndex: 0, explanation: 'Niyet önemli', tags: ['niyet'] },
+  { id: 'dn_hd_o1', subject: 'din', topic: 'hadis', difficulty: 'orta', question: 'Hadis ilminin önemi nedir?', options: ['Kur\'an\'ı anlamaya yardımcı', 'Kur\'an\'ın yerine geçer', 'Tarih öğretir', 'Edebiyat öğretir'], correctIndex: 0, explanation: 'Kur\'an\'ın açıklanması', tags: ['önem'] },
+  { id: 'dn_hd_o2', subject: 'din', topic: 'hadis', difficulty: 'orta', question: 'Hadisin iki bölümü nedir?', options: ['Senet ve metin', 'Sure ve ayet', 'Konu ve sonuç', 'Giriş ve gelişme'], correctIndex: 0, explanation: 'Senet ve metin', tags: ['yapı'] },
+  { id: 'dn_hd_z1', subject: 'din', topic: 'hadis', difficulty: 'zor', question: 'Mevzu hadis ne demektir?', options: ['Sahih hadis', 'Uydurma hadis', 'Zayıf hadis', 'Hasen hadis'], correctIndex: 1, explanation: 'Uydurma', tags: ['mevzu'] },
+  { id: 'dn_hd_z2', subject: 'din', topic: 'hadis', difficulty: 'zor', question: 'Hadis-i Kudsi ne demektir?', options: ['Manası Allah\'tan lafzı peygamberden', 'Kur\'an ayeti', 'Normal hadis', 'Zayıf hadis'], correctIndex: 0, explanation: 'Anlamı ilahi', tags: ['kudsi'] },
+  // Değerler ek
+  { id: 'dn_dg_k1', subject: 'din', topic: 'degerler', difficulty: 'kolay', question: 'Hangisi evrensel bir değerdir?', options: ['Adalet', 'Bencillik', 'Kibir', 'Haset'], correctIndex: 0, explanation: 'Adalet', tags: ['adalet'] },
+  { id: 'dn_dg_k2', subject: 'din', topic: 'degerler', difficulty: 'kolay', question: 'Merhamet ne demektir?', options: ['Acıma ve şefkat', 'Kızgınlık', 'Nefret', 'Korku'], correctIndex: 0, explanation: 'Şefkat duygusu', tags: ['merhamet'] },
+  { id: 'dn_dg_o1', subject: 'din', topic: 'degerler', difficulty: 'orta', question: 'Empati ne demektir?', options: ['Kendini karşısındakinin yerine koyma', 'Kendi çıkarını düşünme', 'Sessiz kalma', 'Eleştirme'], correctIndex: 0, explanation: 'Başkasını anlama', tags: ['empati'] },
+  { id: 'dn_dg_o2', subject: 'din', topic: 'degerler', difficulty: 'orta', question: 'Hangisi toplumsal değerlerden biri değildir?', options: ['Dayanışma', 'Yardımlaşma', 'Bencillik', 'Saygı'], correctIndex: 2, explanation: 'Bencillik değer değil', tags: ['toplum'] },
+  { id: 'dn_dg_z1', subject: 'din', topic: 'degerler', difficulty: 'zor', question: 'Kul hakkı ne demektir?', options: ['İnsanların birbirine olan hakları', 'Allah hakkı', 'Devlet hakkı', 'Hayvan hakkı'], correctIndex: 0, explanation: 'İnsanlar arası haklar', tags: ['kul hakkı'] },
+  { id: 'dn_dg_z2', subject: 'din', topic: 'degerler', difficulty: 'zor', question: 'Kul hakkı affedilebilir mi?', options: ['Sadece hak sahibi affedebilir', 'Allah affeder', 'Otomatik affedilir', 'Hiç affedilmez'], correctIndex: 0, explanation: 'Hak sahibinin affı gerekir', tags: ['af'] },
+  // İngilizce: Prepositions
+  { id: 'en_prep_k1', subject: 'ingilizce', topic: 'prepositions', difficulty: 'kolay', question: 'The book is ___ the table.', options: ['on', 'in', 'under', 'behind'], correctIndex: 0, explanation: 'On the table', tags: ['on'] },
+  { id: 'en_prep_k2', subject: 'ingilizce', topic: 'prepositions', difficulty: 'kolay', question: 'She is ___ school.', options: ['on', 'at', 'in', 'by'], correctIndex: 1, explanation: 'At school', tags: ['at'] },
+  { id: 'en_prep_k3', subject: 'ingilizce', topic: 'prepositions', difficulty: 'kolay', question: 'I wake up ___ 7 o\'clock.', options: ['in', 'on', 'at', 'by'], correctIndex: 2, explanation: 'At + saat', tags: ['at'] },
+  { id: 'en_prep_o1', subject: 'ingilizce', topic: 'prepositions', difficulty: 'orta', question: 'I was born ___ June.', options: ['on', 'in', 'at', 'by'], correctIndex: 1, explanation: 'In + ay', tags: ['in'] },
+  { id: 'en_prep_o2', subject: 'ingilizce', topic: 'prepositions', difficulty: 'orta', question: 'He is good ___ math.', options: ['in', 'on', 'at', 'by'], correctIndex: 2, explanation: 'Good at', tags: ['at'] },
+  { id: 'en_prep_o3', subject: 'ingilizce', topic: 'prepositions', difficulty: 'orta', question: 'The picture is ___ the wall.', options: ['in', 'on', 'at', 'under'], correctIndex: 1, explanation: 'On the wall', tags: ['on'] },
+  { id: 'en_prep_z1', subject: 'ingilizce', topic: 'prepositions', difficulty: 'zor', question: 'I am interested ___ music.', options: ['on', 'at', 'in', 'by'], correctIndex: 2, explanation: 'Interested in', tags: ['in'] },
+  { id: 'en_prep_z2', subject: 'ingilizce', topic: 'prepositions', difficulty: 'zor', question: 'She depends ___ her parents.', options: ['on', 'in', 'at', 'by'], correctIndex: 0, explanation: 'Depend on', tags: ['on'] },
+  { id: 'en_prep_z3', subject: 'ingilizce', topic: 'prepositions', difficulty: 'zor', question: 'I apologized ___ being late.', options: ['for', 'to', 'at', 'by'], correctIndex: 0, explanation: 'Apologize for', tags: ['for'] },
+  // İngilizce: Comparatives ek
+  { id: 'en_cmp_k1', subject: 'ingilizce', topic: 'comparatives', difficulty: 'kolay', question: 'My house is ___ than yours. (big)', options: ['big', 'bigger', 'biggest', 'more big'], correctIndex: 1, explanation: '-er', tags: ['comparative'] },
+  { id: 'en_cmp_k2', subject: 'ingilizce', topic: 'comparatives', difficulty: 'kolay', question: 'Summer is ___ than winter. (hot)', options: ['hot', 'hotter', 'hottest', 'more hot'], correctIndex: 1, explanation: 'hotter', tags: ['comparative'] },
+  { id: 'en_cmp_k3', subject: 'ingilizce', topic: 'comparatives', difficulty: 'kolay', question: 'A car is ___ than a bicycle. (fast)', options: ['fast', 'faster', 'fastest', 'more fast'], correctIndex: 1, explanation: 'faster', tags: ['comparative'] },
+  { id: 'en_cmp_o1', subject: 'ingilizce', topic: 'comparatives', difficulty: 'orta', question: 'This book is ___ than that one. (interesting)', options: ['interesting', 'interestinger', 'more interesting', 'most interesting'], correctIndex: 2, explanation: 'Long adj use more', tags: ['comparative'] },
+  { id: 'en_cmp_o2', subject: 'ingilizce', topic: 'comparatives', difficulty: 'orta', question: 'He is the ___ student. (smart)', options: ['smart', 'smarter', 'smartest', 'most smart'], correctIndex: 2, explanation: 'Superlative -est', tags: ['superlative'] },
+  { id: 'en_cmp_o3', subject: 'ingilizce', topic: 'comparatives', difficulty: 'orta', question: 'This is the ___ movie. (bad)', options: ['bad', 'worse', 'worst', 'baddest'], correctIndex: 2, explanation: 'bad→worse→worst', tags: ['irregular'] },
+  { id: 'en_cmp_z1', subject: 'ingilizce', topic: 'comparatives', difficulty: 'zor', question: '"Far" comparative hali?', options: ['farer', 'more far', 'farther/further', 'farest'], correctIndex: 2, explanation: 'far→farther', tags: ['irregular'] },
+  { id: 'en_cmp_z2', subject: 'ingilizce', topic: 'comparatives', difficulty: 'zor', question: '"Little" comparative hali?', options: ['littler', 'more little', 'less', 'least'], correctIndex: 2, explanation: 'little→less→least', tags: ['irregular'] },
+  { id: 'en_cmp_z3', subject: 'ingilizce', topic: 'comparatives', difficulty: 'zor', question: 'The ___ you study, the ___ you learn.', options: ['more / more', 'most / most', 'many / many', 'much / much'], correctIndex: 0, explanation: 'The more...the more', tags: ['structure'] },
+  // İngilizce: Reading ek
+  { id: 'en_rd_k1', subject: 'ingilizce', topic: 'reading', difficulty: 'kolay', question: '"She has a cat and a dog." How many pets?', options: ['1', '2', '3', '4'], correctIndex: 1, explanation: '2 pets', tags: ['counting'] },
+  { id: 'en_rd_k2', subject: 'ingilizce', topic: 'reading', difficulty: 'kolay', question: '"It is rainy today." What is the weather?', options: ['Sunny', 'Rainy', 'Snowy', 'Windy'], correctIndex: 1, explanation: 'Rainy', tags: ['weather'] },
+  { id: 'en_rd_k3', subject: 'ingilizce', topic: 'reading', difficulty: 'kolay', question: '"She is a doctor." What is her job?', options: ['Teacher', 'Doctor', 'Engineer', 'Nurse'], correctIndex: 1, explanation: 'Doctor', tags: ['job'] },
+  { id: 'en_rd_o1', subject: 'ingilizce', topic: 'reading', difficulty: 'orta', question: '"She didn\'t come because she was sick." Why?', options: ['Busy', 'Sick', 'Forgot', 'Didn\'t want to'], correctIndex: 1, explanation: 'Because she was sick', tags: ['reason'] },
+  { id: 'en_rd_o2', subject: 'ingilizce', topic: 'reading', difficulty: 'orta', question: '"My brother is older than me." Who is younger?', options: ['My brother', 'Me', 'Both', 'Neither'], correctIndex: 1, explanation: 'I am younger', tags: ['comparison'] },
+  { id: 'en_rd_o3', subject: 'ingilizce', topic: 'reading', difficulty: 'orta', question: '"They went to the beach last summer." Where?', options: ['Mountain', 'Beach', 'Park', 'School'], correctIndex: 1, explanation: 'Beach', tags: ['place'] },
+  { id: 'en_rd_z1', subject: 'ingilizce', topic: 'reading', difficulty: 'zor', question: '"Although it was raining, they went outside." What happened?', options: ['Stayed home', 'Went outside despite rain', 'Rain stopped', 'They waited'], correctIndex: 1, explanation: 'Although = rağmen', tags: ['contrast'] },
+  { id: 'en_rd_z2', subject: 'ingilizce', topic: 'reading', difficulty: 'zor', question: '"If I had known, I would have helped." Did the person help?', options: ['Yes', 'No', 'Maybe', 'Unknown'], correctIndex: 1, explanation: '3rd conditional = didn\'t happen', tags: ['conditional'] },
+  { id: 'en_rd_z3', subject: 'ingilizce', topic: 'reading', difficulty: 'zor', question: '"The meeting was postponed." What happened?', options: ['Cancelled', 'Delayed', 'It happened', 'Moved'], correctIndex: 1, explanation: 'Postponed = ertelendi', tags: ['vocabulary'] },
+  // İngilizce: Modals ek
+  { id: 'en_md_k1', subject: 'ingilizce', topic: 'modals', difficulty: 'kolay', question: 'I ___ swim. (ability)', options: ['can', 'must', 'should', 'will'], correctIndex: 0, explanation: 'Can = yetenek', tags: ['can'] },
+  { id: 'en_md_k2', subject: 'ingilizce', topic: 'modals', difficulty: 'kolay', question: 'You ___ wear a seatbelt. (obligation)', options: ['can', 'may', 'must', 'might'], correctIndex: 2, explanation: 'Must = zorunluluk', tags: ['must'] },
+  { id: 'en_md_k3', subject: 'ingilizce', topic: 'modals', difficulty: 'kolay', question: 'You ___ eat more vegetables. (advice)', options: ['can', 'must', 'should', 'will'], correctIndex: 2, explanation: 'Should = tavsiye', tags: ['should'] },
+  { id: 'en_md_o1', subject: 'ingilizce', topic: 'modals', difficulty: 'orta', question: 'It ___ rain tomorrow. (possibility)', options: ['can', 'might', 'must', 'should'], correctIndex: 1, explanation: 'Might = olasılık', tags: ['might'] },
+  { id: 'en_md_o2', subject: 'ingilizce', topic: 'modals', difficulty: 'orta', question: '___ you help me, please?', options: ['Must', 'Should', 'Could', 'May'], correctIndex: 2, explanation: 'Could = rica', tags: ['request'] },
+  { id: 'en_md_o3', subject: 'ingilizce', topic: 'modals', difficulty: 'orta', question: 'You ___ not park here. (prohibition)', options: ['can', 'may', 'must', 'should'], correctIndex: 2, explanation: 'Must not = yasak', tags: ['prohibition'] },
+  { id: 'en_md_z1', subject: 'ingilizce', topic: 'modals', difficulty: 'zor', question: '"Must" ve "have to" farkı?', options: ['Must iç, have to dış zorunluluk', 'Aynı şey', 'Have to daha güçlü', 'Must geçmiş'], correctIndex: 0, explanation: 'Must kişisel, have to dış kurallar', tags: ['fark'] },
+  { id: 'en_md_z2', subject: 'ingilizce', topic: 'modals', difficulty: 'zor', question: 'She ___ have left already. (deduction)', options: ['can', 'must', 'should', 'will'], correctIndex: 1, explanation: 'Must have + V3', tags: ['deduction'] },
+  { id: 'en_md_z3', subject: 'ingilizce', topic: 'modals', difficulty: 'zor', question: '"Can\'t have done" ne anlama gelir?', options: ['Yapmış olamaz', 'Yapabilirdi', 'Yapmalıydı', 'Yapacak'], correctIndex: 0, explanation: 'Geçmişte imkansız çıkarım', tags: ['past modal'] },
 ];
 
 // ─── YARDIMCI FONKSİYONLAR ───
@@ -2192,8 +2378,35 @@ export interface TestInfo {
   questions: Question[];
 }
 
+// Alias maps for topic/subject ID mismatches in question data
+const TOPIC_ALIASES: Record<string, string[]> = {
+  'tamlama': ['tamlamalar'],
+  'karekok': ['karekoklu_ifadeler'],
+  'esitsizlik': ['esitsizlikler'],
+  'ucgenler': ['ucgenler_pisagor'],
+  'oteleme_yansima': ['donusum_geometrisi'],
+  'prizmalar': ['geometrik_cisimler'],
+  'mevsimler_ve_iklim': ['mevsimler'],
+  'dna_genetik_kod': ['dna'],
+  'denklemler': ['dogrusel_denklem', 'dogrusal_denklemler'],
+  'uslu_sayilar': ['uslu_ifadeler'],
+  'ataturk_ilkeleri': ['ataturk'],
+  'kuvvet': ['kuvvet_hareket'],
+  'deyimler': ['deyim_atasozleri'],
+  'ekosistem': ['canlilar_besin'],
+};
+
+const SUBJECT_ALIASES: Record<string, string> = {
+  'ing': 'ingilizce',
+};
+
 export function getTestsForTopic(subject: string, topic: string): TestInfo[] {
-  const topicQuestions = questions.filter(q => q.subject === subject && q.topic === topic);
+  // Collect questions matching this topic (including aliases)
+  const topicIds = [topic, ...(TOPIC_ALIASES[topic] || [])];
+  const topicQuestions = questions.filter(q => {
+    const qSubject = SUBJECT_ALIASES[q.subject] || q.subject;
+    return qSubject === subject && topicIds.includes(q.topic);
+  });
   const subjectInfo = SUBJECTS.find(s => s.id === subject);
   const topicInfo = subjectInfo?.topics.find(t => t.id === topic);
   const topicName = topicInfo?.name || topic;
@@ -2233,23 +2446,36 @@ export function getTestsForTopic(subject: string, topic: string): TestInfo[] {
   return tests;
 }
 
+// Shuffle options so correct answer isn't always A
+function shuffleOptions(q: Question): Question {
+  const indices = [0, 1, 2, 3];
+  // Fisher-Yates shuffle
+  for (let i = indices.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [indices[i], indices[j]] = [indices[j], indices[i]];
+  }
+  const newOptions = indices.map(i => q.options[i]) as [string, string, string, string];
+  const newCorrectIndex = indices.indexOf(q.correctIndex);
+  return { ...q, options: newOptions, correctIndex: newCorrectIndex };
+}
+
 // For orta/zor: mix 50% kazanım + 50% yeni nesil when available
 export function getTestQuestions(test: TestInfo): Question[] {
-  const qs = [...test.questions];
+  let qs = [...test.questions];
   
-  if (test.difficulty === 'kolay') {
-    return qs; // only kazanım
+  if (test.difficulty !== 'kolay') {
+    // Try to balance 50/50
+    const kazanim = qs.filter(q => (q.type || 'kazanim') === 'kazanim');
+    const yeniNesil = qs.filter(q => q.type === 'yeni_nesil');
+    
+    if (yeniNesil.length > 0) {
+      const half = Math.ceil(qs.length / 2);
+      const selectedKazanim = kazanim.slice(0, half);
+      const selectedYeniNesil = yeniNesil.slice(0, qs.length - selectedKazanim.length);
+      qs = [...selectedKazanim, ...selectedYeniNesil];
+    }
   }
   
-  // Try to balance 50/50
-  const kazanim = qs.filter(q => (q.type || 'kazanim') === 'kazanim');
-  const yeniNesil = qs.filter(q => q.type === 'yeni_nesil');
-  
-  if (yeniNesil.length === 0) return qs; // no yeni nesil available, use all
-  
-  const half = Math.ceil(qs.length / 2);
-  const selectedKazanim = kazanim.slice(0, half);
-  const selectedYeniNesil = yeniNesil.slice(0, qs.length - selectedKazanim.length);
-  
-  return [...selectedKazanim, ...selectedYeniNesil].sort(() => Math.random() - 0.5);
+  // Shuffle question order and randomize option positions
+  return qs.sort(() => Math.random() - 0.5).map(shuffleOptions);
 }

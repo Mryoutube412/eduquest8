@@ -62,12 +62,17 @@ export default function Quiz() {
     setQuestions(qs);
   }, [testId, subject, topic]);
 
+  // Reset answered flag on every new question (critical for timer-off modes)
+  useEffect(() => {
+    if (questions.length === 0) return;
+    answered.current = false;
+    answerStartTime.current = Date.now();
+  }, [currentIndex, questions.length]);
+
   // Timer
   useEffect(() => {
     if (!timerActive || questions.length === 0 || feedback) return;
     setTimeLeft(timerDuration);
-    answered.current = false;
-    answerStartTime.current = Date.now();
     timerRef.current = setInterval(() => {
       setTimeLeft(prev => {
         if (prev <= 1) { clearInterval(timerRef.current); if (!answered.current) handleAnswer(-1); return 0; }
