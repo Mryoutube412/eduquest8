@@ -5,7 +5,7 @@ import { useAuth } from '@/context/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import BottomNav from '@/components/BottomNav';
 
-const COOLDOWN_MS = 30 * 60 * 1000; // 30 minutes
+const COOLDOWN_MS = 15 * 60 * 1000; // 15 minutes
 const DIFFICULTY_LABELS: Record<string, { label: string; color: string }> = {
   kolay: { label: '🟢 Kolay', color: 'text-green-600' },
   orta: { label: '🟡 Orta', color: 'text-yellow-600' },
