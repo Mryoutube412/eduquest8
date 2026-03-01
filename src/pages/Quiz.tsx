@@ -27,7 +27,7 @@ export default function Quiz() {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const [timeLeft, setTimeLeft] = useState(settings.timerDuration);
+  const [timeLeft, setTimeLeft] = useState(() => settings.timerDuration);
   const [answers, setAnswers] = useState<Array<{ questionId: string; question: string; selectedIndex: number; correctIndex: number; correct: boolean; options: string[]; explanation: string; paragraph?: string }>>([]);
   const [feedback, setFeedback] = useState<'correct' | 'wrong' | null>(null);
   const [localStreak, setLocalStreak] = useState(0);
@@ -73,14 +73,47 @@ export default function Quiz() {
   useEffect(() => {
     if (!timerActive || questions.length === 0 || feedback) return;
     setTimeLeft(timerDuration);
+    const localAnswered = answered;
     timerRef.current = setInterval(() => {
       setTimeLeft(prev => {
-        if (prev <= 1) { clearInterval(timerRef.current); if (!answered.current) handleAnswer(-1); return 0; }
+        if (prev <= 1) {
+          clearInterval(timerRef.current);
+          if (!localAnswered.current) {
+            // Trigger timeout answer inline
+            localAnswered.current = true;
+            const q = questions[currentIndex];
+            setSelectedIndex(-1);
+            setFeedback('wrong');
+            play('wrong');
+            setLocalStreak(0);
+            const newAnswer = {
+              questionId: q.id, question: q.question, selectedIndex: -1,
+              correctIndex: q.correctIndex, correct: false, options: [...q.options],
+              explanation: q.explanation, paragraph: q.paragraph,
+            };
+            setAnswers(prev => [...prev, newAnswer]);
+            setTimeout(() => {
+              if (currentIndex + 1 >= questions.length) {
+                navigate('/results', {
+                  state: {
+                    answers: [...answers, newAnswer], subject, subjectName: subjectInfo?.name,
+                    topic, topicName: topicInfo?.name, testId,
+                  }
+                });
+              } else {
+                setCurrentIndex(i => i + 1);
+                setSelectedIndex(null);
+                setFeedback(null);
+              }
+            }, 1200);
+          }
+          return 0;
+        }
         return prev - 1;
       });
     }, 1000);
     return () => clearInterval(timerRef.current);
-  }, [currentIndex, questions.length, timerActive, timerDuration]);
+  }, [currentIndex, questions, timerActive, timerDuration, feedback]);
 
   const handleAnswer = useCallback((index: number) => {
     if (answered.current) return;

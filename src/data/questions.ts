@@ -719,7 +719,7 @@ export const questions: Question[] = [
 { id: 'mt105', subject: 'matematik', topic: 'olasilik', difficulty: 'orta', question: 'Bir torbada 3 kırmızı 7 mavi top var. Kırmızı çekme olasılığı?', options: ['3/10', '7/10', '3/7', '7/3'], correctIndex: 0, explanation: '3/10', tags: ['olasılık hesabı'] },
 { id: 'mt106', subject: 'matematik', topic: 'olasilik', difficulty: 'orta', question: 'Zar atıldığında çift sayı gelme olasılığı?', options: ['1/2', '1/3', '2/3', '1/6'], correctIndex: 0, explanation: '3 çift / 6 = 1/2', tags: ['koşullu'] },
 { id: 'mt107', subject: 'matematik', topic: 'olasilik', difficulty: 'orta', question: 'Bir torbada 4 beyaz 6 siyah top. Beyaz çekme olasılığı?', options: ['2/5', '3/5', '4/10', '6/10'], correctIndex: 0, explanation: '4/10 = 2/5', tags: ['sadeleştirme'] },
-{ id: 'mt108', subject: 'matematik', topic: 'olasilik', difficulty: 'orta', question: 'Kart destesinden as çekme olasılığı?', options: ['4/52', '1/13', '13/52', '1/4'], correctIndex: 0, explanation: '4/52 = 1/13', tags: ['kart'] },
+{ id: 'mt108', subject: 'matematik', topic: 'olasilik', difficulty: 'orta', question: 'İki zar atıldığında toplam 7 gelme olasılığı?', options: ['6/36', '5/36', '7/36', '4/36'], correctIndex: 0, explanation: '(1,6)(2,5)(3,4)(4,3)(5,2)(6,1) = 6/36 = 1/6', tags: ['zar'] },
 { id: 'mt109', subject: 'matematik', topic: 'olasilik', difficulty: 'orta', question: 'Olasılık aralığı nedir?', options: ['0 ile 1 arası', '0 ile 10 arası', '-1 ile 1 arası', '1 ile 100 arası'], correctIndex: 0, explanation: '0 ≤ P ≤ 1', tags: ['aralık'] },
 
 { id: 'mt110', subject: 'matematik', topic: 'olasilik', difficulty: 'zor', question: 'Bir torbada 5 kırmızı, 3 mavi top var. Rastgele bir top çekilip geri konuyor. İkinci çekişte kırmızı gelme olasılığı?', options: ['5/8', '1/2', '3/8', '5/16'], correctIndex: 0, explanation: 'Geri konduğu için her çekiş bağımsız, 5/8', tags: ['bağımsız'] },
@@ -898,7 +898,7 @@ export const questions: Question[] = [
   // Olasılık
   { id: 'mt031', subject: 'matematik', topic: 'olasilik', difficulty: 'kolay', question: 'Bir zarın 6 gelme olasılığı kaçtır?', options: ['1/2', '1/3', '1/4', '1/6'], correctIndex: 3, explanation: 'Zarın 6 olası sonucu var, 1/6.', tags: ['olasılık'] },
   { id: 'mt032', subject: 'matematik', topic: 'olasilik', difficulty: 'orta', question: 'Bir yazı-tura atışında iki kez üst üste yazı gelme olasılığı?', options: ['1/2', '1/3', '1/4', '1/8'], correctIndex: 2, explanation: '1/2 × 1/2 = 1/4', tags: ['olasılık'] },
-  { id: 'mt033', subject: 'matematik', topic: 'olasilik', difficulty: 'zor', question: '52 kartlık desteden kırmızı As çekme olasılığı?', options: ['1/52', '2/52', '4/52', '1/26'], correctIndex: 1, explanation: '2 kırmızı As var: 2/52 = 1/26', tags: ['olasılık'] },
+  { id: 'mt033', subject: 'matematik', topic: 'olasilik', difficulty: 'zor', question: 'Bir sınıfta 12 kız 8 erkek var. Rastgele 2 öğrenci seçilecek. İkisinin de kız olma olasılığı?', options: ['33/95', '12/20', '11/19', '132/380'], correctIndex: 0, explanation: '(12/20) × (11/19) = 132/380 = 33/95', tags: ['bağımlı olasılık'] },
 
 // --- 1. ÇARPANLAR VE KATLAR (15 SORU) ---
   // Kolay (5)
