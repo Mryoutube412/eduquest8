@@ -13,6 +13,8 @@ import Results from "./pages/Results";
 import Leaderboard from "./pages/Leaderboard";
 import Messages from "./pages/Messages";
 import Profile from "./pages/Profile";
+import EnglishActivities from "./pages/EnglishActivities";
+import VocabActivity from "./pages/VocabActivity";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -48,6 +50,8 @@ const App = () => (
               <Route path="/leaderboard" element={<ProtectedRoute><Leaderboard /></ProtectedRoute>} />
               <Route path="/messages" element={<ProtectedRoute><Messages /></ProtectedRoute>} />
               <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+              <Route path="/english-activities" element={<ProtectedRoute><EnglishActivities /></ProtectedRoute>} />
+              <Route path="/english-activities/:activityId" element={<ProtectedRoute><VocabActivity /></ProtectedRoute>} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
