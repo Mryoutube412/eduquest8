@@ -4,13 +4,16 @@ import { VOCAB_ACTIVITIES, type VocabWord } from '@/data/vocabularyActivities';
 import { useSound } from '@/hooks/useSound';
 import { useConfetti } from '@/hooks/useConfetti';
 import { useGame } from '@/context/GameContext';
+import { useAuth } from '@/context/AuthContext';
+import { supabase } from '@/integrations/supabase/client';
 
 export default function VocabActivity() {
   const { activityId } = useParams<{ activityId: string }>();
   const navigate = useNavigate();
-  const { settings } = useGame();
+  const { settings, addScore } = useGame();
   const { play, setEnabled } = useSound();
   const { fire, ConfettiOverlay } = useConfetti();
+  const { user } = useAuth();
 
   const activity = VOCAB_ACTIVITIES.find(a => a.id === activityId);
 
@@ -45,6 +48,16 @@ export default function VocabActivity() {
       
       const newScore = score + 1;
       setScore(newScore);
+      addScore(1);
+
+      // Update profile score in DB
+      if (user) {
+        supabase.from('profiles').select('total_score').eq('user_id', user.id).single().then(({ data }) => {
+          if (data) {
+            supabase.from('profiles').update({ total_score: data.total_score + 1 }).eq('user_id', user.id).then(() => {});
+          }
+        });
+      }
 
       if (newScore === activity.words.length) {
         setCompleted(true);
