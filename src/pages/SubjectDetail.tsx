@@ -107,53 +107,72 @@ export default function SubjectDetail() {
           })
         ) : (
           // Test list for selected topic
-          tests.length === 0 ? (
-            <div className="text-center py-12">
-              <p className="text-4xl mb-3">📭</p>
-              <p className="text-muted-foreground">Bu konuda henüz test yok</p>
-            </div>
-          ) : (
-            tests.map(test => {
-              const completed = isCompleted(test.id);
-              const cooldown = isOnCooldown(test.id);
-              const remaining = getCooldownRemaining(test.id);
-              const diffInfo = DIFFICULTY_LABELS[test.difficulty];
+          <>
+            {/* Video konu anlatımı butonu */}
+            {selectedTopicInfo?.videoUrl && (
+              <a
+                href={selectedTopicInfo.videoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-gradient-to-r from-red-500 to-red-600 rounded-2xl p-5 card-shadow hover:card-shadow-hover hover:scale-[1.01] transition-all text-left touch-target flex items-center gap-4 text-white"
+              >
+                <span className="text-3xl">🎬</span>
+                <div className="flex-1">
+                  <h3 className="font-bold">Konu Anlatımını İzle</h3>
+                  <p className="text-sm text-white/80">YouTube'da video ile öğren</p>
+                </div>
+                <span className="text-lg">▶️</span>
+              </a>
+            )}
 
-              return (
-                <button
-                  key={test.id}
-                  onClick={() => handleTestClick(test)}
-                  disabled={cooldown}
-                  className={`w-full bg-card rounded-2xl p-5 card-shadow text-left touch-target flex items-center gap-4 transition-all
-                    ${cooldown ? 'opacity-50 cursor-not-allowed' : 'hover:card-shadow-hover hover:scale-[1.01]'}
-                  `}
-                >
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <h3 className="font-bold text-card-foreground">{test.name}</h3>
-                      <span className={`text-xs font-medium ${diffInfo.color}`}>{diffInfo.label}</span>
+            {tests.length === 0 ? (
+              <div className="text-center py-12">
+                <p className="text-4xl mb-3">📭</p>
+                <p className="text-muted-foreground">Bu konuda henüz test yok</p>
+              </div>
+            ) : (
+              tests.map(test => {
+                const completed = isCompleted(test.id);
+                const cooldown = isOnCooldown(test.id);
+                const remaining = getCooldownRemaining(test.id);
+                const diffInfo = DIFFICULTY_LABELS[test.difficulty];
+
+                return (
+                  <button
+                    key={test.id}
+                    onClick={() => handleTestClick(test)}
+                    disabled={cooldown}
+                    className={`w-full bg-card rounded-2xl p-5 card-shadow text-left touch-target flex items-center gap-4 transition-all
+                      ${cooldown ? 'opacity-50 cursor-not-allowed' : 'hover:card-shadow-hover hover:scale-[1.01]'}
+                    `}
+                  >
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h3 className="font-bold text-card-foreground">{test.name}</h3>
+                        <span className={`text-xs font-medium ${diffInfo.color}`}>{diffInfo.label}</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        {test.questionCount} soru
+                        {test.difficulty === 'zor' && ' • ⏱️ Süresiz'}
+                      </p>
+                      {cooldown && remaining && (
+                        <p className="text-xs text-warning mt-1">⏳ {remaining} sonra tekrar çözebilirsin</p>
+                      )}
                     </div>
-                    <p className="text-sm text-muted-foreground">
-                      {test.questionCount} soru
-                      {test.difficulty === 'zor' && ' • ⏱️ Süresiz'}
-                    </p>
-                    {cooldown && remaining && (
-                      <p className="text-xs text-warning mt-1">⏳ {remaining} sonra tekrar çözebilirsin</p>
+                    {completed && !cooldown && (
+                      <span className="text-success text-xl">✅</span>
                     )}
-                  </div>
-                  {completed && !cooldown && (
-                    <span className="text-success text-xl">✅</span>
-                  )}
-                  {completed && cooldown && (
-                    <span className="text-warning text-xl">⏳</span>
-                  )}
-                  {!completed && (
-                    <span className="text-muted-foreground text-lg">→</span>
-                  )}
-                </button>
-              );
-            })
-          )
+                    {completed && cooldown && (
+                      <span className="text-warning text-xl">⏳</span>
+                    )}
+                    {!completed && (
+                      <span className="text-muted-foreground text-lg">→</span>
+                    )}
+                  </button>
+                );
+              })
+            )}
+          </>
         )}
       </div>
       <BottomNav />
