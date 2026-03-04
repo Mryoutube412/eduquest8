@@ -15,6 +15,7 @@ import Messages from "./pages/Messages";
 import Profile from "./pages/Profile";
 import EnglishActivities from "./pages/EnglishActivities";
 import VocabActivity from "./pages/VocabActivity";
+import GeneralKnowledge from "./pages/GeneralKnowledge";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -52,6 +53,7 @@ const App = () => (
               <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
               <Route path="/english-activities" element={<ProtectedRoute><EnglishActivities /></ProtectedRoute>} />
               <Route path="/english-activities/:activityId" element={<ProtectedRoute><VocabActivity /></ProtectedRoute>} />
+              <Route path="/genel-kultur" element={<ProtectedRoute><GeneralKnowledge /></ProtectedRoute>} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
