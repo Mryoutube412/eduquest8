@@ -45,17 +45,30 @@ export default function Index() {
 
         <div>
           <h2 className="text-lg font-bold text-foreground mb-4">🎮 Etkinlikler</h2>
-          <button
-            onClick={() => navigate('/english-activities')}
-            className="w-full bg-card rounded-2xl p-5 card-shadow hover:card-shadow-hover hover:scale-[1.01] transition-all text-left touch-target flex items-center gap-4"
-          >
-            <span className="text-3xl">🇬🇧</span>
-            <div className="flex-1">
-              <h3 className="font-bold text-card-foreground">İngilizce Kelime Etkinlikleri</h3>
-              <p className="text-sm text-muted-foreground">Sürükle-bırak ile kelime eşleştir</p>
-            </div>
-            <span className="text-muted-foreground text-lg">→</span>
-          </button>
+          <div className="space-y-3">
+            <button
+              onClick={() => navigate('/genel-kultur')}
+              className="w-full bg-gradient-to-br from-yellow-500 to-amber-600 rounded-2xl p-5 card-shadow hover:card-shadow-hover hover:scale-[1.01] transition-all text-left touch-target flex items-center gap-4"
+            >
+              <span className="text-3xl">🏆</span>
+              <div className="flex-1">
+                <h3 className="font-bold text-primary-foreground">Genel Kültür</h3>
+                <p className="text-sm text-primary-foreground/80">Kim Milyoner Olmak İster tarzı</p>
+              </div>
+              <span className="text-primary-foreground/80 text-lg">→</span>
+            </button>
+            <button
+              onClick={() => navigate('/english-activities')}
+              className="w-full bg-card rounded-2xl p-5 card-shadow hover:card-shadow-hover hover:scale-[1.01] transition-all text-left touch-target flex items-center gap-4"
+            >
+              <span className="text-3xl">🇬🇧</span>
+              <div className="flex-1">
+                <h3 className="font-bold text-card-foreground">İngilizce Kelime Etkinlikleri</h3>
+                <p className="text-sm text-muted-foreground">Sürükle-bırak ile kelime eşleştir</p>
+              </div>
+              <span className="text-muted-foreground text-lg">→</span>
+            </button>
+          </div>
         </div>
       </div>
       <BottomNav />

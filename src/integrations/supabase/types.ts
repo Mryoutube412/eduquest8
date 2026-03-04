@@ -14,6 +14,27 @@ export type Database = {
   }
   public: {
     Tables: {
+      blocked_users: {
+        Row: {
+          blocked_id: string
+          blocker_id: string
+          created_at: string
+          id: string
+        }
+        Insert: {
+          blocked_id: string
+          blocker_id: string
+          created_at?: string
+          id?: string
+        }
+        Update: {
+          blocked_id?: string
+          blocker_id?: string
+          created_at?: string
+          id?: string
+        }
+        Relationships: []
+      }
       completed_tests: {
         Row: {
           completed_at: string
@@ -41,6 +62,36 @@ export type Database = {
           test_id?: string
           total_count?: number
           user_id?: string
+        }
+        Relationships: []
+      }
+      gk_scores: {
+        Row: {
+          completed_at: string
+          gkp_earned: number
+          id: string
+          questions_answered: number
+          test_id: string
+          user_id: string
+          withdrew: boolean
+        }
+        Insert: {
+          completed_at?: string
+          gkp_earned?: number
+          id?: string
+          questions_answered?: number
+          test_id: string
+          user_id: string
+          withdrew?: boolean
+        }
+        Update: {
+          completed_at?: string
+          gkp_earned?: number
+          id?: string
+          questions_answered?: number
+          test_id?: string
+          user_id?: string
+          withdrew?: boolean
         }
         Relationships: []
       }
@@ -76,6 +127,7 @@ export type Database = {
           best_streak: number
           created_at: string
           display_name: string
+          gkp: number
           id: string
           streak: number
           total_correct: number
@@ -88,6 +140,7 @@ export type Database = {
           best_streak?: number
           created_at?: string
           display_name?: string
+          gkp?: number
           id?: string
           streak?: number
           total_correct?: number
@@ -100,6 +153,7 @@ export type Database = {
           best_streak?: number
           created_at?: string
           display_name?: string
+          gkp?: number
           id?: string
           streak?: number
           total_correct?: number

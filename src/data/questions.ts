@@ -2447,17 +2447,48 @@ export function getTestsForTopic(subject: string, topic: string): TestInfo[] {
   return tests;
 }
 
+// Balance option lengths so longest ≠ always correct
+function balanceOptionLengths(q: Question): Question {
+  const opts = [...q.options] as [string, string, string, string];
+  const lengths = opts.map(o => o.length);
+  const maxLen = Math.max(...lengths);
+  const avgLen = lengths.reduce((a, b) => a + b, 0) / 4;
+  
+  // If correct answer is significantly longer than others, pad wrong answers
+  const correctLen = opts[q.correctIndex].length;
+  if (correctLen > avgLen * 1.4) {
+    // Pad shorter wrong options with contextual suffixes
+    const suffixes = [
+      ' olarak bilinir', ' şeklinde tanımlanır', ' olarak kabul edilir', ' biçiminde ifade edilir',
+      ' olarak değerlendirilir', ' şeklinde açıklanır', ' olarak adlandırılır', ' biçiminde yorumlanır',
+    ];
+    let suffixIdx = 0;
+    for (let i = 0; i < 4; i++) {
+      if (i === q.correctIndex) continue;
+      // If this option is significantly shorter
+      if (opts[i].length < correctLen * 0.6 && opts[i].length < 20) {
+        opts[i] = opts[i] + suffixes[suffixIdx % suffixes.length];
+        suffixIdx++;
+      }
+    }
+  }
+  
+  return { ...q, options: opts };
+}
+
 // Shuffle options so correct answer isn't always A
 function shuffleOptions(q: Question): Question {
+  // First balance lengths
+  const balanced = balanceOptionLengths(q);
   const indices = [0, 1, 2, 3];
   // Fisher-Yates shuffle
   for (let i = indices.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [indices[i], indices[j]] = [indices[j], indices[i]];
   }
-  const newOptions = indices.map(i => q.options[i]) as [string, string, string, string];
-  const newCorrectIndex = indices.indexOf(q.correctIndex);
-  return { ...q, options: newOptions, correctIndex: newCorrectIndex };
+  const newOptions = indices.map(i => balanced.options[i]) as [string, string, string, string];
+  const newCorrectIndex = indices.indexOf(balanced.correctIndex);
+  return { ...balanced, options: newOptions, correctIndex: newCorrectIndex };
 }
 
 // For orta/zor: mix 50% kazanım + 50% yeni nesil when available
