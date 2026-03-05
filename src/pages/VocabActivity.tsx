@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { VOCAB_ACTIVITIES, type VocabWord } from '@/data/vocabularyActivities';
 import { useSound } from '@/hooks/useSound';
@@ -28,11 +28,10 @@ export default function VocabActivity() {
   });
 
   const [placements, setPlacements] = useState<Record<string, string>>({});
-  const [draggedWord, setDraggedWord] = useState<string | null>(null);
+  const [selectedWord, setSelectedWord] = useState<string | null>(null);
   const [feedback, setFeedback] = useState<Record<string, 'correct' | 'wrong'>>({});
   const [completed, setCompleted] = useState(false);
   const [score, setScore] = useState(0);
-  const touchStartRef = useRef<{ word: string; x: number; y: number } | null>(null);
 
   useEffect(() => { setEnabled(settings.soundEnabled); }, [settings.soundEnabled]);
 
@@ -50,7 +49,6 @@ export default function VocabActivity() {
       setScore(newScore);
       addScore(1);
 
-      // Update profile score in DB
       if (user) {
         supabase.from('profiles').select('total_score').eq('user_id', user.id).single().then(({ data }) => {
           if (data) {
@@ -74,7 +72,8 @@ export default function VocabActivity() {
         });
       }, 800);
     }
-  }, [activity, score, play, fire]);
+    setSelectedWord(null);
+  }, [activity, score, play, fire, user, addScore]);
 
   if (!activity) {
     navigate('/');
@@ -84,13 +83,30 @@ export default function VocabActivity() {
   const placedWords = new Set(Object.values(placements));
   const availableWords = shuffledWords.filter(w => !placedWords.has(w.english));
 
+  // Tap-to-select: tap a word, then tap a slot
+  const handleWordTap = (english: string) => {
+    if (selectedWord === english) {
+      setSelectedWord(null);
+    } else {
+      setSelectedWord(english);
+    }
+  };
+
+  const handleSlotTap = (turkish: string) => {
+    if (placements[turkish]) return; // already placed
+    if (selectedWord) {
+      placeWord(selectedWord, turkish);
+    }
+  };
+
+  // Desktop drag still works
   const handleDragStart = (e: React.DragEvent, word: string) => {
     e.dataTransfer.setData('text/plain', word);
-    setDraggedWord(word);
+    setSelectedWord(word);
   };
 
   const handleDragEnd = () => {
-    setDraggedWord(null);
+    setSelectedWord(null);
   };
 
   const handleDrop = (e: React.DragEvent, turkish: string) => {
@@ -101,38 +117,6 @@ export default function VocabActivity() {
 
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
-  };
-
-  const handleTouchStart = (word: string, e: React.TouchEvent) => {
-    const touch = e.touches[0];
-    touchStartRef.current = { word, x: touch.clientX, y: touch.clientY };
-    setDraggedWord(word);
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (!touchStartRef.current) return;
-    const touch = e.changedTouches[0];
-    const element = document.elementFromPoint(touch.clientX, touch.clientY);
-    const slot = element?.closest('[data-slot]');
-    if (slot) {
-      const turkish = slot.getAttribute('data-slot');
-      if (turkish) {
-        placeWord(touchStartRef.current.word, turkish);
-      }
-    }
-    touchStartRef.current = null;
-    setDraggedWord(null);
-  };
-
-
-
-  const handleRemove = (turkish: string) => {
-    if (feedback[turkish] === 'correct') return;
-    setPlacements(prev => {
-      const copy = { ...prev };
-      delete copy[turkish];
-      return copy;
-    });
   };
 
   return (
@@ -168,8 +152,14 @@ export default function VocabActivity() {
         </div>
       ) : (
         <div className="max-w-3xl mx-auto px-4 py-6 space-y-6">
+          {selectedWord && (
+            <div className="bg-primary/10 border border-primary/30 rounded-xl p-3 text-center text-sm font-medium text-primary animate-fade-in">
+              ✋ "<strong>{selectedWord}</strong>" seçildi — aşağıdan Türkçe karşılığına dokun
+            </div>
+          )}
+
           <div>
-            <h3 className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-3">🇬🇧 İngilizce Kelimeler (Sürükle)</h3>
+            <h3 className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-3">🇬🇧 İngilizce Kelimeler {selectedWord ? '(Seçili)' : '(Dokun / Sürükle)'}</h3>
             <div className="flex flex-wrap gap-2">
               {availableWords.map(w => (
                 <div
@@ -177,10 +167,11 @@ export default function VocabActivity() {
                   draggable
                   onDragStart={(e) => handleDragStart(e, w.english)}
                   onDragEnd={handleDragEnd}
-                  onTouchStart={(e) => handleTouchStart(w.english, e)}
-                  onTouchEnd={handleTouchEnd}
-                  className={`bg-primary/10 text-primary border border-primary/30 px-3 py-2 rounded-lg font-medium text-sm cursor-grab active:cursor-grabbing select-none touch-target transition-all hover:scale-105 ${
-                    draggedWord === w.english ? 'opacity-50 scale-95' : ''
+                  onClick={() => handleWordTap(w.english)}
+                  className={`px-3 py-2 rounded-lg font-medium text-sm cursor-pointer select-none touch-target transition-all hover:scale-105 ${
+                    selectedWord === w.english
+                      ? 'bg-primary text-primary-foreground scale-105 ring-2 ring-primary ring-offset-2'
+                      : 'bg-primary/10 text-primary border border-primary/30'
                   }`}
                 >
                   {w.english}
@@ -190,7 +181,7 @@ export default function VocabActivity() {
           </div>
 
           <div>
-            <h3 className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-3">🇹🇷 Türkçe Anlamlar (Bırak)</h3>
+            <h3 className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-3">🇹🇷 Türkçe Anlamlar {selectedWord ? '(Buraya dokun)' : '(Bırak)'}</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {shuffledSlots.map(w => {
                 const placed = placements[w.turkish];
@@ -202,14 +193,16 @@ export default function VocabActivity() {
                     data-slot={w.turkish}
                     onDragOver={handleDragOver}
                     onDrop={(e) => !placed && handleDrop(e, w.turkish)}
-                    onClick={() => placed && handleRemove(w.turkish)}
-                    className={`rounded-xl p-4 border-2 border-dashed transition-all min-h-[60px] flex items-center justify-between ${
+                    onClick={() => !placed && handleSlotTap(w.turkish)}
+                    className={`rounded-xl p-4 border-2 border-dashed transition-all min-h-[60px] flex items-center justify-between cursor-pointer ${
                       fb === 'correct'
                         ? 'border-success bg-success/10'
                         : fb === 'wrong'
                         ? 'border-destructive bg-destructive/10 animate-shake'
                         : placed
                         ? 'border-primary/50 bg-primary/5'
+                        : selectedWord
+                        ? 'border-primary/50 bg-primary/5 hover:bg-primary/10'
                         : 'border-muted-foreground/30 bg-card'
                     }`}
                   >
@@ -222,7 +215,9 @@ export default function VocabActivity() {
                       </span>
                     )}
                     {!placed && (
-                      <span className="text-xs text-muted-foreground">buraya bırak</span>
+                      <span className="text-xs text-muted-foreground">
+                        {selectedWord ? '👆 dokun' : 'buraya bırak'}
+                      </span>
                     )}
                   </div>
                 );
