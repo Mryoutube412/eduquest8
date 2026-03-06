@@ -6,6 +6,7 @@ import { useSound } from '@/hooks/useSound';
 import { useConfetti } from '@/hooks/useConfetti';
 import { getGKTests, getGKTestById, getGKPForQuestion, getDifficultyLabel, type GKTest } from '@/data/gkQuestions';
 import BottomNav from '@/components/BottomNav';
+import GKPConverter from '@/components/GKPConverter';
 
 const GK_COOLDOWN_MS = 60 * 60 * 1000; // 60 dakika
 const TIMER_SECONDS = 30;
