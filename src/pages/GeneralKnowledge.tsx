@@ -60,7 +60,7 @@ function TestSelection({ onSelectTest }: { onSelectTest: (test: GKTest) => void 
           <h1 className="text-3xl font-bold text-primary-foreground">🏆 Genel Kültür</h1>
           <p className="text-primary-foreground/80 mt-1">Kim Milyoner Olmak İster tarzı</p>
           {profile && (
-            <div className="flex gap-3 mt-3">
+            <div className="flex gap-3 mt-3 flex-wrap items-center">
               <div className="bg-white/20 rounded-xl px-4 py-2 flex items-center gap-2">
                 <span>💎</span>
                 <span className="font-bold text-primary-foreground">{profile.gkp}</span>
@@ -69,8 +69,13 @@ function TestSelection({ onSelectTest }: { onSelectTest: (test: GKTest) => void 
               <div className="bg-white/20 rounded-xl px-4 py-2 flex items-center gap-2">
                 <span>⭐</span>
                 <span className="font-bold text-primary-foreground">{Math.floor(profile.gkp / 10)}</span>
-                <span className="text-xs text-primary-foreground/80">Puan</span>
+                <span className="text-xs text-primary-foreground/80">Puan değeri</span>
               </div>
+              <GKPConverter gkp={profile.gkp} onConvert={() => {
+                supabase.from('profiles').select('gkp').eq('user_id', user!.id).single().then(({ data }) => {
+                  if (data) setProfile(data as any);
+                });
+              }} />
             </div>
           )}
         </div>
